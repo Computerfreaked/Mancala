@@ -26,3 +26,6 @@ local.properties
 *.jar
 *.war
 *.ear
+
+# VScode
+.vscode
