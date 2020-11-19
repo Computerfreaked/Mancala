@@ -7,11 +7,11 @@ public class Player {
   public Player(){
   }
 
-  public Player opponent(){
+  public Player getOpponent(){
     return this.opponent;
   }
 
-  public Boolean hasTurn(){
+  public Boolean getHasTurn(){
     return hasTurn;
   }
 }
