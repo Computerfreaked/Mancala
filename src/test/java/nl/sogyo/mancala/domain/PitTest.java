@@ -25,4 +25,12 @@ public class PitTest {
 
     assertSame(pit3, pit1.getNextPit(2), "Failed to get the proper pit");
   }
+
+  @Test
+  public void pit_PitWithAmount6_6PitsAreCreatedAndChainedButNotMore(){
+    Pit pit1 = new Pit(6);
+
+    assertTrue(pit1.getNextPit(5) instanceof Pit);
+    assertFalse(pit1.getNextPit(6) instanceof Pit);
+  }
 }
