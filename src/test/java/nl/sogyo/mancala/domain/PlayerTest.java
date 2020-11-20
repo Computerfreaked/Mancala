@@ -17,7 +17,6 @@ public class PlayerTest {
 
     assertTrue(player1.getHasTurn(), "player1 one should have the turn");
     assertFalse(player1.getOpponent().getHasTurn(), "The opponent of player1 should not have the turn");
-    assertSame(player1, player1.getOpponent().getOpponent(), "The opponent of the opponent of player1 should be player1. There is no proper reference between the players.");
   }
 
   @Test
