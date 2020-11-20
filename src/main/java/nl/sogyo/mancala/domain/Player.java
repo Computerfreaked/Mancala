@@ -12,6 +12,6 @@ public class Player {
   }
 
   public Boolean getHasTurn(){
-    return hasTurn;
+    return this.hasTurn;
   }
 }
