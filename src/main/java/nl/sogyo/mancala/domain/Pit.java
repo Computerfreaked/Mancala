@@ -6,7 +6,10 @@ public class Pit {
     this.nextPit = nextPit;
   }
 
-  public Pit getNextPit(){
+  public Pit getNextPit(int howOften){
+    if(howOften != 1){
+      return nextPit.getNextPit(howOften - 1);
+    }
     return this.nextPit;
   }
 }
