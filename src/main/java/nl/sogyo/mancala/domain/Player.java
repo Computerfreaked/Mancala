@@ -5,6 +5,13 @@ public class Player {
   private Boolean hasTurn;
 
   public Player(){
+    this.hasTurn = true;
+    this.opponent = new Player(this);
+  }
+
+  public Player(Player opponent){
+    this.hasTurn = false;
+    this.opponent = opponent;
   }
 
   public Player getOpponent(){
