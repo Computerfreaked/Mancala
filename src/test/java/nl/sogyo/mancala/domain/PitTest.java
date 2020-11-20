@@ -5,7 +5,7 @@ import org.junit.jupiter.api.Test;
  
 public class PitTest {
   @Test
-  public void pit_SetNextPit_nextPitIsUpdated(){
+  public void pit_SetNextPit_NextPitIsUpdated(){
     Pit pit1 = new Pit();
     Pit pit2 = new Pit();
 
@@ -15,7 +15,7 @@ public class PitTest {
   }
 
   @Test
-  public void pit_GetNextPit_nextPitIsReturned(){
+  public void pit_GetNextPit_NextPitIsReturned(){
     Pit pit1 = new Pit();
     Pit pit2 = new Pit();
 
