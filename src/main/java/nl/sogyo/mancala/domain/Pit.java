@@ -7,7 +7,9 @@ public class Pit {
   }
 
   public Pit(int amount){
-
+    if(amount > 1){
+      this.nextPit = new Pit(amount - 1);
+    }
   }
 
   public void setNextPit(Pit nextPit){
