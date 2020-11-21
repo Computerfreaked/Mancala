@@ -9,4 +9,8 @@ public class Container {
     }
     return this.nextContainer;
   }
+
+  public void setNextContainer(Pit nextPit){
+    this.nextContainer = nextPit;
+  }
 }

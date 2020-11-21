@@ -12,8 +12,4 @@ public class Pit extends Container{
       this.nextContainer = new Kalaha();
     }
   }
-
-  public void setNextContainer(Pit nextPit){
-    this.nextContainer = nextPit;
-  }
 }
