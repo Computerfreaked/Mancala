@@ -16,8 +16,9 @@ public class PitTest {
   public void pit_PitWithAmount2_2PitsCreatedAndKalahaAttachedAndChained(){
     Pit pit1 = new Pit(2);
 
-    assertTrue(pit1.getNextContainer(1) instanceof Pit);
-    assertTrue(pit1.getNextContainer(2) instanceof Kalaha);
+    assertTrue(pit1 instanceof Pit, "Pit creation error");
+    assertTrue(pit1.getNextContainer(1) instanceof Pit, "Pit creation error");
+    assertTrue(pit1.getNextContainer(2) instanceof Kalaha, "Kalaha was not attached to chain of Pits");
   }
 
   @Test
