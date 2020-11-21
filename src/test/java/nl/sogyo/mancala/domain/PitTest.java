@@ -30,8 +30,8 @@ public class PitTest {
   public void pit_PitWithAmount6_6PitsAreCreatedAndChainedButNotMore(){
     Pit pit1 = new Pit(6);
 
-    assertTrue(pit1.getNextContainer(5) instanceof Pit);
-    assertFalse(pit1.getNextContainer(6) instanceof Pit);
+    assertTrue(pit1.getNextContainer(5) instanceof Pit, "Pit 5 was not or improperly created");
+    assertFalse(pit1.getNextContainer(6) instanceof Pit, "Pit 6 should not exist or at least not be of type Pit");
   }
 
   @Test
