@@ -19,7 +19,7 @@ public class PitTest {
     Pit pit1 = new Pit(2);
 
     assertTrue(pit1 instanceof Pit, "Pit creation error");
-    assertTrue(pit1.getNextContainer(1) instanceof Pit, "Pit creation error");
+    assertTrue(pit1.getNextContainer(1) instanceof Pit, "Pit creation error or improper linking");
     assertTrue(pit1.getNextContainer(2) instanceof Kalaha, "Kalaha was not attached to chain of Pits");
   }
 
