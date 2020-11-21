@@ -2,7 +2,7 @@ package nl.sogyo.mancala.domain;
 
 public class Container {
   protected Container nextContainer;
-  public int amountStones;
+  protected int amountStones;
 
   public Container getNextContainer(int howOften){
     if(howOften > 1){
