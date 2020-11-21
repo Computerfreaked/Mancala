@@ -33,4 +33,12 @@ public class PitTest {
     assertTrue(pit1.getNextContainer(5) instanceof Pit);
     assertFalse(pit1.getNextContainer(6) instanceof Pit);
   }
+
+  @Test
+  public void pit_PitWithAmount2_2PitsCreatedAndKalahaAttachedAndChained(){
+    Pit pit1 = new Pit(2);
+
+    assertTrue(pit1.getNextContainer(1) instanceof Pit);
+    assertFalse(pit1.getNextContainer(2) instanceof Kalaha);
+  }
 }
