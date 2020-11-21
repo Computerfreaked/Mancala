@@ -39,6 +39,6 @@ public class PitTest {
     Pit pit1 = new Pit(2);
 
     assertTrue(pit1.getNextContainer(1) instanceof Pit);
-    assertFalse(pit1.getNextContainer(2) instanceof Kalaha);
+    assertTrue(pit1.getNextContainer(2) instanceof Kalaha);
   }
 }
