@@ -10,7 +10,7 @@ public class Container {
     return this.nextContainer;
   }
 
-  public void setNextContainer(Pit nextPit){
+  public void setNextContainer(Container nextPit){
     this.nextContainer = nextPit;
   }
 }
