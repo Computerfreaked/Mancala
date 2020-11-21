@@ -19,4 +19,13 @@ public class PitTest {
     assertTrue(pit1.getNextContainer(1) instanceof Pit);
     assertTrue(pit1.getNextContainer(2) instanceof Kalaha);
   }
+
+  @Test
+  public void pit_PitWithAmount6_AllPitsHave4Stones(){
+    Pit pit1 = new Pit(6);
+
+    for(int i = 1; i < 6; i++){
+      assertEquals(4, pit1.getNextContainer(i).getAmountStones());
+    }
+  }
 }
