@@ -1,6 +1,6 @@
 package nl.sogyo.mancala.domain;
 public class Pit {
-  private Pit nextPit;
+  private Pit nextContainer;
 
   public Pit(){
 
@@ -8,18 +8,18 @@ public class Pit {
 
   public Pit(int amount){
     if(amount > 1){
-      this.nextPit = new Pit(amount - 1);
+      this.nextContainer = new Pit(amount - 1);
     }
   }
 
-  public void setNextPit(Pit nextPit){
-    this.nextPit = nextPit;
+  public void setNextContainer(Pit nextPit){
+    this.nextContainer = nextPit;
   }
 
-  public Pit getNextPit(int howOften){
+  public Pit getNextContainer(int howOften){
     if(howOften > 1){
-      return nextPit.getNextPit(howOften - 1);
+      return nextContainer.getNextContainer(howOften - 1);
     }
-    return this.nextPit;
+    return this.nextContainer;
   }
 }
