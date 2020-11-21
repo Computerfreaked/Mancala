@@ -28,7 +28,7 @@ public class PitTest {
     Pit pit1 = new Pit(6);
 
     for(int i = 1; i < 6; i++){
-      assertEquals(4, pit1.getNextContainer(i).getAmountStones());
+      assertEquals(4, pit1.getNextContainer(i).getAmountStones(), "Not all pits have 4 stones when created");
     }
   }
 }
