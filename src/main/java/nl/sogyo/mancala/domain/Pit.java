@@ -8,6 +8,9 @@ public class Pit extends Container{
     if(amount > 1){
       this.nextContainer = new Pit(amount - 1);
     }
+    else{
+      this.nextContainer = new Kalaha();
+    }
   }
 
   public void setNextContainer(Pit nextPit){
