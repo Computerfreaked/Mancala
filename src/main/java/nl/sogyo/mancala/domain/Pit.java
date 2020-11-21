@@ -1,5 +1,5 @@
 package nl.sogyo.mancala.domain;
-public class Pit {
+public class Pit extends Container{
   private Pit nextContainer;
 
   public Pit(){
@@ -16,7 +16,7 @@ public class Pit {
     this.nextContainer = nextPit;
   }
 
-  public Pit getNextContainer(int howOften){
+  public Container getNextContainer(int howOften){
     if(howOften > 1){
       return nextContainer.getNextContainer(howOften - 1);
     }
