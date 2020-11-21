@@ -5,28 +5,6 @@ import org.junit.jupiter.api.Test;
  
 public class PitTest {
   @Test
-  public void pit_SetNextContainer_NextContainerIsUpdated(){
-    Pit pit1 = new Pit();
-    Pit pit2 = new Pit();
-
-    pit1.setNextContainer(pit2);
-
-    assertSame(pit2, pit1.getNextContainer(1), "Failed to set nextPit");
-  }
-
-  @Test
-  public void pit_GetNextContainerWithHowOften2_Pit3IsReturned(){
-    Pit pit1 = new Pit();
-    Pit pit2 = new Pit();
-    Pit pit3 = new Pit();
-
-    pit1.setNextContainer(pit2);
-    pit2.setNextContainer(pit3);
-
-    assertSame(pit3, pit1.getNextContainer(2), "Failed to get the proper pit");
-  }
-
-  @Test
   public void pit_PitWithAmount6_6PitsAreCreatedAndChainedButNotMore(){
     Pit pit1 = new Pit(6);
 
