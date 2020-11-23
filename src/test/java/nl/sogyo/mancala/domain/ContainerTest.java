@@ -25,12 +25,4 @@ public class ContainerTest {
 
     assertSame(container3, container1.getNextContainer(2), "Failed to get the proper pit");
   }
-
-  // @Test
-  // public void container_GetAmountStones_AmountIsReturned(){
-  //   Container container1 = new Container();
-
-  //   container1.amountStones = 5;
-  //   assertEquals(5, container1.getAmountStones());
-  // }
 }
