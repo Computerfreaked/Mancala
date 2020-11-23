@@ -7,14 +7,14 @@ public class Player {
 
   public Player(){
     this.hasTurn = true;
-    this.opponent = new Player(this);
     this.firstPit = new Pit(6, this);
+    this.opponent = new Player(this);
   }
 
   public Player(Player opponent){
     this.hasTurn = false;
-    this.opponent = opponent;
     this.firstPit = new Pit(6, this);
+    this.opponent = opponent;
   }
 
   public Player getOpponent(){
