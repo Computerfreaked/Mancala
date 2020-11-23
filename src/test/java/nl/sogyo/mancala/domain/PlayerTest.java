@@ -30,7 +30,7 @@ public class PlayerTest {
   public void Player_NewPlayer_ThePlayerAndOpponenHaveASequenceOfPitsAndAKalaha(){
     Player player1 = new Player();
 
-    assertTrue(player1.getFirstPit() instanceof Pit);
-    assertTrue(player1.getOpponent().getFirstPit() instanceof Pit);
+    assertTrue(player1.getFirstPit() instanceof Pit, "Player does not have a sequence of containers");
+    assertTrue(player1.getOpponent().getFirstPit() instanceof Pit, "Players opponent does not have sequence of containers");
   }
 }
