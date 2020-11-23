@@ -5,4 +5,8 @@ public class Kalaha extends Container{
     //default but just to be sure
     this.amountStones = 0;
   }
+
+  public Kalaha(Player player) {
+    this.owner = player;
+  }
 }
