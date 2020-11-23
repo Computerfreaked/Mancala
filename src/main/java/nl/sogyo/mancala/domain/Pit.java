@@ -1,7 +1,5 @@
 package nl.sogyo.mancala.domain;
 public class Pit extends Container{
-  private Pit opposite;
-
   public Pit(){
     this.amountStones = 4;
   }
@@ -27,13 +25,5 @@ public class Pit extends Container{
     else{
       this.nextContainer = new Kalaha(player);
     }
-  }
-
-  public void setOppositePit(Pit opposite){
-    this.opposite = opposite;
-  }
-
-  public Pit getOppositePit(){
-    return this.opposite;
   }
 }
