@@ -33,4 +33,11 @@ public class PlayerTest {
     assertTrue(player1.getFirstPit() instanceof Pit, "Player does not have a sequence of containers");
     assertTrue(player1.getOpponent().getFirstPit() instanceof Pit, "Players opponent does not have sequence of containers");
   }
+
+  @Test
+  public void Player_NewPlayer_OpponenIsInformedAboutFirstContainerAndUpdatesNextContainerOfKalahaReturnsOwnFirstContainerOwnKalahaNextContainerUpdated(){
+    Player player1 = new Player();
+
+    assertSame(player1.getFirstPit(), player1.getFirstPit().getNextContainer(14));
+  }
 }
