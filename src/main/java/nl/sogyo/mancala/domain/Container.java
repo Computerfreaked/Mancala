@@ -20,7 +20,7 @@ public class Container {
     return amountStones;
   }
 
-public Player getOwner() {
-	return this.owner;
-}
+  public Player getOwner() {
+    return this.owner;
+  }
 }
