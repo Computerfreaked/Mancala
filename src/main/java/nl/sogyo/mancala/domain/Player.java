@@ -21,4 +21,8 @@ public class Player {
   public Boolean getHasTurn(){
     return this.hasTurn;
   }
+
+  public Pit getFirstPit(){
+    return null;
+  }
 }

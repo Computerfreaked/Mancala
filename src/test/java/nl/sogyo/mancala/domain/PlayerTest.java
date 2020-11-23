@@ -25,4 +25,11 @@ public class PlayerTest {
 
     assertSame(player1, player1.getOpponent().getOpponent(), "The opponent of the opponent of player1 should be player1. There is no proper reference between the players.");
   }
+
+  @Test
+  public void Player_NewPlayer_ThePlayerHasASequenceOfPitsAndAKalaha(){
+    Player player1 = new Player();
+
+    assertTrue(player1.getFirstPit() instanceof Pit);
+  }
 }
