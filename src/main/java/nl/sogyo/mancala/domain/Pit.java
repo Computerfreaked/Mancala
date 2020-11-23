@@ -14,4 +14,7 @@ public class Pit extends Container{
       this.nextContainer = new Kalaha();
     }
   }
+
+  public Pit(int amount, Player player1) {
+  }
 }

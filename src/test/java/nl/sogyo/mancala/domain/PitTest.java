@@ -31,4 +31,15 @@ public class PitTest {
       assertEquals(4, pit1.getNextContainer(i).getAmountStones(), "Not all pits have 4 stones when created");
     }
   }
+
+  @Test
+  public void pit_PitWithAmount6AndOwnerPlayer1_AllPitsAndKalahaHaveOwnerPlayer1(){
+    Player player1 = new Player();
+
+    Pit pit1 = new Pit(6, player1);
+
+    for(int i = 1; i < 7; i++){
+      assertEquals(player1, pit1.getNextContainer(i).getOwner(), "Owner of a pit is not properly set");
+    }
+  }
 }

@@ -18,4 +18,8 @@ public class Container {
   public int getAmountStones() {
     return amountStones;
   }
+
+public Container getOwner() {
+	return null;
+}
 }
