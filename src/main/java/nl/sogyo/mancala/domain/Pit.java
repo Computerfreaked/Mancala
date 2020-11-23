@@ -32,4 +32,8 @@ public class Pit extends Container{
   public void setOppositePit(Pit opposite){
     this.opposite = opposite;
   }
+
+  public Pit getOppositePit(){
+    return this.opposite;
+  }
 }
