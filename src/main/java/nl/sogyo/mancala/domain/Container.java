@@ -4,7 +4,7 @@ public class Container {
   protected Container nextContainer;
   protected int amountStones;
   protected Player owner;
-  protected Pit opposite;
+  protected Container opposite;
 
   public Container getNextContainer(int howOften){
     if(howOften > 1){
@@ -24,7 +24,6 @@ public class Container {
   public Player getOwner() {
     return this.owner;
   }
-
 
   public void setOppositeContainer(Container opposite){
     this.opposite = opposite;
