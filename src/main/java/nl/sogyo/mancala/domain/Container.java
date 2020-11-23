@@ -3,6 +3,7 @@ package nl.sogyo.mancala.domain;
 public class Container {
   protected Container nextContainer;
   protected int amountStones;
+  protected Player owner;
 
   public Container getNextContainer(int howOften){
     if(howOften > 1){
@@ -19,7 +20,7 @@ public class Container {
     return amountStones;
   }
 
-public Container getOwner() {
-	return null;
+public Player getOwner() {
+	return this.owner;
 }
 }
