@@ -14,6 +14,7 @@ public class Player {
   public Player(Player opponent){
     this.hasTurn = false;
     this.opponent = opponent;
+    this.firstPit = new Pit(6, this);
   }
 
   public Player getOpponent(){
