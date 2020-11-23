@@ -27,9 +27,10 @@ public class PlayerTest {
   }
 
   @Test
-  public void Player_NewPlayer_ThePlayerHasASequenceOfPitsAndAKalaha(){
+  public void Player_NewPlayer_ThePlayerAndOpponenHaveASequenceOfPitsAndAKalaha(){
     Player player1 = new Player();
 
     assertTrue(player1.getFirstPit() instanceof Pit);
+    assertTrue(player1.getOpponent().getFirstPit() instanceof Pit);
   }
 }
