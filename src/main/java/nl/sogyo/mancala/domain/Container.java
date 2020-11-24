@@ -37,15 +37,13 @@ public class Container {
     int oppositeHowMuchAhead;
 
     if(this.nextContainer instanceof Kalaha){
-      this.opposite = this.getNextContainer(2);
-      this.opposite.setOppositeContainer(this);
-      return 4;
+      oppositeHowMuchAhead = 2;
     }
     else {
       oppositeHowMuchAhead = this.nextContainer.setAllOpposites();
-      this.opposite = this.getNextContainer(oppositeHowMuchAhead);
-      this.opposite.setOppositeContainer(this);
-      return oppositeHowMuchAhead + 2;
     }
+    this.opposite = this.getNextContainer(oppositeHowMuchAhead);
+    this.opposite.setOppositeContainer(this);
+    return oppositeHowMuchAhead + 2;
   }
 }
