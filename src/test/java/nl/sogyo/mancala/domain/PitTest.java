@@ -28,6 +28,13 @@ public class PitTest {
   }
 
   @Test
+  public void pit_Pit_LastKalahaIsLinkedToFirstPit(){
+    Pit pit1 = new Pit();
+
+    assertSame(pit1, pit1.getNextContainer(14), "Last kalaha not linked to first Pit");
+  }
+
+  @Test
   public void pit_PitWithAmount6_6PitsAreCreatedAndChainedButNotMore(){
     Pit pit1 = new Pit(6);
 

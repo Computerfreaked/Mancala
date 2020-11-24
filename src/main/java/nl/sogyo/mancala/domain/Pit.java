@@ -2,6 +2,7 @@ package nl.sogyo.mancala.domain;
 public class Pit extends Container{
   public Pit(){
     this.nextContainer = new Pit(2, true);
+    this.getNextContainer(13).setNextContainer(this);
   }
 
   public Pit(int amount, boolean newsetup){
