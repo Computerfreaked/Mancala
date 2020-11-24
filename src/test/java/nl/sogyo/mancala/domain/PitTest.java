@@ -69,20 +69,20 @@ public class PitTest {
     assertSame(pit1.getOwner(), pit1.getNextContainer(13).getOwner().getOpponent(), "Second kalaha does not belong to opponent");
   }
 
-  // ----------------------------- new stuff above
-
   @Test
   public void pit_Play_StonesDistributed(){
-    Player player1 = new Player();
+    Pit pit1 = new Pit();
 
-    player1.getFirstPit().play();
+    pit1.play();
 
-    assertEquals(0, player1.getFirstPit().getAmountStones(), "Played pit not empty");
+    assertEquals(0, pit1.getAmountStones(), "Played pit not empty");
     for(int i = 1; i <5; i++){
-      assertEquals(5, player1.getFirstPit().getNextContainer(i).getAmountStones(), "Stones not properly distributed");
+      assertEquals(5, pit1.getNextContainer(i).getAmountStones(), "Stones not properly distributed");
     }
-    assertEquals(4, player1.getFirstPit().getNextContainer(5).getAmountStones(), "Too many stones distributed");
+    assertEquals(4, pit1.getNextContainer(5).getAmountStones(), "Too many stones distributed");
   }
+
+  // ----------------------------- new stuff above
 
   @Test
   public void pit_Play_AfterStonesDistributionSwitchHasTurn(){
