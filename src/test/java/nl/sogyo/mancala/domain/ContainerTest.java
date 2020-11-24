@@ -25,4 +25,17 @@ public class ContainerTest {
 
     assertSame(container3, container1.getNextContainer(2), "Failed to get the proper pit");
   }
+
+  @Test
+  public void container_NewPlayer_AllPitsHaveAnOpposite(){
+    Player player1 = new Player();
+
+    assertSame(player1.getFirstPit(), player1.getFirstPit().getOppositeContainer().getOppositeContainer(), "Improper opposite on pit");
+    for(int i = 1; i< 6; i++){
+      assertSame( player1.getFirstPit().getNextContainer(i),
+                  player1.getFirstPit().getNextContainer(i).getOppositeContainer().getOppositeContainer(),
+                  "Improper opposite on pit"
+      );
+    }
+  }
 }

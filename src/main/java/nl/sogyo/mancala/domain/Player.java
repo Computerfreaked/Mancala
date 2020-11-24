@@ -10,6 +10,7 @@ public class Player {
     this.firstPit = new Pit(6, this);
     this.opponent = new Player(this);
     linkPitSeq(this.opponent.linkPitSeq(this.firstPit));
+    this.firstPit.setAllOpposites();
   }
 
   public Player(Player opponent){

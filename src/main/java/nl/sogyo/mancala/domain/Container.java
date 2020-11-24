@@ -32,4 +32,20 @@ public class Container {
   public Container getOppositeContainer(){
     return this.opposite;
   }
+
+  public int setAllOpposites(){
+    int oppositeHowMuchAhead;
+
+    if(this.nextContainer instanceof Kalaha){
+      this.opposite = this.getNextContainer(2);
+      this.opposite.setOppositeContainer(this);
+      return 4;
+    }
+    else {
+      oppositeHowMuchAhead = this.nextContainer.setAllOpposites();
+      this.opposite = this.getNextContainer(oppositeHowMuchAhead);
+      this.opposite.setOppositeContainer(this);
+      return oppositeHowMuchAhead + 2;
+    }
+  }
 }
