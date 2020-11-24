@@ -36,8 +36,11 @@ public class PlayerTest {
   @Test
   public void player_SwitchTurn_TurnsAreSwitched(){
     player1.switchTurn();
-
     assertFalse(player1.getHasTurn(), "player 1 should not have the turn");
     assertTrue(player1.getOpponent().getHasTurn(), "opponent od player1 should have the turn");
+
+    player1.getFirstPit().play();
+    assertTrue(player1.getHasTurn(), "player 1 should not have the turn after second switch");
+    assertFalse(player1.getOpponent().getHasTurn(), "opponent of player1 should have the turn after second switch");
   }
 }
