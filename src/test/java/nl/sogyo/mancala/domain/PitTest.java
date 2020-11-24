@@ -72,6 +72,7 @@ public class PitTest {
     Player player1 = new Player();
 
     player1.getFirstPit().play();
+    
     assertFalse(player1.getHasTurn(), "player 1 should not have the turn");
     assertTrue(player1.getOpponent().getHasTurn(), "opponent of player1 should have the turn");
   }
@@ -133,6 +134,8 @@ public class PitTest {
 
     Pit instructedPit = (Pit) player1.getFirstPit().getOppositeContainer();
     instructedPit.sendStonesToKalaha(2);
+
+    doGrossErrorCheck(player1);
 
     assertEquals(0, instructedPit.getAmountStones(), "Instrcuted pit to send stones should be empty");
     assertEquals(6, player1.getFirstPit().getNextContainer(6).getAmountStones(), "Not all stones ended up in the Kalaha");
