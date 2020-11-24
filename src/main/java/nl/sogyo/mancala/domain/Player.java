@@ -2,7 +2,7 @@ package nl.sogyo.mancala.domain;
 
 public class Player {
   private Player opponent;
-  private Boolean hasTurn;
+  private boolean hasTurn;
   private Pit firstPit;
 
   public Player(){
@@ -23,7 +23,7 @@ public class Player {
     return this.opponent;
   }
 
-  public Boolean getHasTurn(){
+  public boolean getHasTurn(){
     return this.hasTurn;
   }
 
@@ -39,10 +39,13 @@ public class Player {
   public void switchTurn() {
     if(this.hasTurn){
       this.hasTurn = false;
-      this.opponent.switchTurn();
     }
     else {
       this.hasTurn = true;
+    }
+
+    if(this.hasTurn == this.opponent.getHasTurn()){
+      this.opponent.switchTurn();
     }
   }
 }
