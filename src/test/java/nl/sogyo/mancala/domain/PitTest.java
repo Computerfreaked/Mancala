@@ -37,7 +37,6 @@ public class PitTest {
 
   @Test
   public void pit_Pit_AllPitsHave4StonesAndKalahasHave0(){
-    //TODO fix typo first should be second
     Pit pit1 = new Pit();
 
     assertEquals(4, pit1.getAmountStones(), "First pit does not have 4 stones");
@@ -49,7 +48,7 @@ public class PitTest {
     for(i=7; i <=12; i++){
       assertEquals(4, pit1.getNextContainer(i).getAmountStones(), "Not all of the second 6 pits have 4 stones");
     }
-    assertEquals(0, pit1.getNextContainer(13).getAmountStones(), "First kalaha does not have 0 stones");
+    assertEquals(0, pit1.getNextContainer(13).getAmountStones(), "Second kalaha does not have 0 stones");
 
     doGrossErrorCheck(pit1);
   }
