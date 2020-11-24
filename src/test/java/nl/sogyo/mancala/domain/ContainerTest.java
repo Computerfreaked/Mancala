@@ -32,12 +32,12 @@ public class ContainerTest {
 
   @Test
   public void container_NewPlayer_AllPitsHaveAnOpposite(){
-    Player player1 = new Player();
+    Pit pit1 = new Pit();
 
-    assertSame(player1.getFirstPit(), player1.getFirstPit().getOppositeContainer().getOppositeContainer(), "Improper opposite on pit");
+    assertSame(pit1, pit1.getOppositeContainer().getOppositeContainer(), "Improper opposite on pit");
     for(int i = 1; i< 6; i++){
-      assertSame( player1.getFirstPit().getNextContainer(i),
-                  player1.getFirstPit().getNextContainer(i).getOppositeContainer().getOppositeContainer(),
+      assertSame( pit1.getNextContainer(i),
+                  pit1.getNextContainer(i).getOppositeContainer().getOppositeContainer(),
                   "Improper opposite on pit"
       );
     }

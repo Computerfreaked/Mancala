@@ -6,6 +6,8 @@ public class Pit extends Container{
     
     this.nextContainer = new Pit(2, this.owner, true);
     this.getNextContainer(13).setNextContainer(this);
+
+    this.setAllOpposites();
   }
 
   public Pit(int amount, Player player, boolean newsetup){
