@@ -49,7 +49,7 @@ public class Pit extends Container{
     if(amountStonesReceived > 1){
       this.nextContainer.distributeStones(amountStonesReceived - 1);
     }
-    else if (this.amountStones == 1 && this.owner.getHasTurn() == true){
+    else if (this.amountStones == 1 && this.owner.getHasTurn()){
         Pit oppositePit = (Pit) this.opposite;
         oppositePit.sendStonesToKalaha(this.amountStones);
         this.amountStones = 0;
