@@ -35,6 +35,21 @@ public class PitTest {
   }
 
   @Test
+  public void pit_Pit_AllPitsHave4StonesAndKalahasHave0(){
+    Pit pit1 = new Pit();
+
+    int i;
+    for(i=0; i <=5; i++){
+      assertEquals(4, pit1.getNextContainer(i).getAmountStones(), "Not all of the first 6 pits have 4 stones");
+    }
+    assertEquals(0, pit1.getNextContainer(6).getAmountStones(), "First kalaha does not have 0 stones");
+    for(i=7; i <=12; i++){
+      assertEquals(4, pit1.getNextContainer(i).getAmountStones(), "Not all of the second 6 pits have 4 stones");
+    }
+    assertEquals(0, pit1.getNextContainer(13).getAmountStones(), "First kalaha does not have 0 stones");
+  }
+
+  @Test
   public void pit_PitWithAmount6_6PitsAreCreatedAndChainedButNotMore(){
     Pit pit1 = new Pit(6);
 

@@ -6,6 +6,8 @@ public class Pit extends Container{
   }
 
   public Pit(int amount, boolean newsetup){
+    this.amountStones = 4;
+
     if((amount + 1) % 7 == 0){
       this.nextContainer = new Kalaha(amount + 1);
     }

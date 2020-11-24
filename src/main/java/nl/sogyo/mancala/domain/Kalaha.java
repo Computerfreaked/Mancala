@@ -11,6 +11,8 @@ public class Kalaha extends Container{
   }
 
   public Kalaha(int amount){
+    this.amountStones = 0;
+
     if(amount == 7){
       this.nextContainer = new Pit(amount + 1, true);
     }
