@@ -47,6 +47,8 @@ public class PitTest {
       assertEquals(4, pit1.getNextContainer(i).getAmountStones(), "Not all of the second 6 pits have 4 stones");
     }
     assertEquals(0, pit1.getNextContainer(13).getAmountStones(), "First kalaha does not have 0 stones");
+
+    doGrossErrorCheck(pit1);
   }
 
   @Test
