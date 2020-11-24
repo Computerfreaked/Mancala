@@ -10,11 +10,15 @@ public class Kalaha extends Container{
     this.owner = player;
   }
 
-  public Kalaha(int amount){
+  public Kalaha(int amount, Player player){
     this.amountStones = 0;
 
     if(amount == 7){
-      this.nextContainer = new Pit(amount + 1, true);
+      this.owner = player;
+      this.nextContainer = new Pit(amount + 1, player, true);
+    }
+    else {
+      this.owner = player.getOpponent();
     }
   }
 

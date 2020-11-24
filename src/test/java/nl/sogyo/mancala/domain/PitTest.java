@@ -37,6 +37,7 @@ public class PitTest {
 
   @Test
   public void pit_Pit_AllPitsHave4StonesAndKalahasHave0(){
+    //TODO fix typo first should be second
     Pit pit1 = new Pit();
 
     assertEquals(4, pit1.getAmountStones(), "First pit does not have 4 stones");
@@ -52,6 +53,24 @@ public class PitTest {
 
     doGrossErrorCheck(pit1);
   }
+
+  @Test
+  public void pit_Pit_First6PitsAndKalahaAreOwnedByPlayerRestByPlayerOpponent(){
+    Pit pit1 = new Pit();
+
+    assertTrue(pit1.getOwner() instanceof Player, "No player assigned to pit1");
+    int i;
+    for(i=1; i <=5; i++){
+      assertTrue(pit1.getNextContainer(i).getOwner() instanceof Player, "No player assigned to first sequence of containers");
+    }
+    assertTrue(pit1.getNextContainer(6).getOwner() instanceof Player, "No player assigned to first kalaha");
+    for(i=7; i <=12; i++){
+      assertSame(pit1.getOwner(), pit1.getNextContainer(i).getOwner().getOpponent(), "Second sequence of containers does not belong to opponent");
+    }
+    assertSame(pit1.getOwner(), pit1.getNextContainer(13).getOwner().getOpponent(), "Second kalaha does not belong to opponent");
+  }
+
+  // ----------------------------- new stuff above
 
   @Test
   public void pit_PitWithAmount6_6PitsAreCreatedAndChainedButNotMore(){
