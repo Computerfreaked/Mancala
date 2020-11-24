@@ -16,8 +16,9 @@ public class PitTest {
   public void pit_Pit_6Pits1Kalaha6pits1KalahaCreated(){
     Pit pit1 = new Pit();
 
+    assertTrue(pit1 instanceof Pit, "Error in creating first pit");
     int i;
-    for(i=0; i <=5; i++){
+    for(i=1; i <=5; i++){
       assertTrue(pit1.getNextContainer(i) instanceof Pit, "Error in creating first 6 pits");
     }
     assertTrue(pit1.getNextContainer(6) instanceof Kalaha, "First kalaha not created");
@@ -38,8 +39,9 @@ public class PitTest {
   public void pit_Pit_AllPitsHave4StonesAndKalahasHave0(){
     Pit pit1 = new Pit();
 
+    assertEquals(4, pit1.getAmountStones(), "First pit does not have 4 stones");
     int i;
-    for(i=0; i <=5; i++){
+    for(i=1; i <=5; i++){
       assertEquals(4, pit1.getNextContainer(i).getAmountStones(), "Not all of the first 6 pits have 4 stones");
     }
     assertEquals(0, pit1.getNextContainer(6).getAmountStones(), "First kalaha does not have 0 stones");
