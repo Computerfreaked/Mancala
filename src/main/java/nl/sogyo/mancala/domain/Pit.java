@@ -29,7 +29,6 @@ public class Pit extends Container{
 
   public void play() {
     if(this.amountStones == 0){
-      //TODO or throw exception?
       return;
     }
 
