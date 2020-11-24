@@ -32,10 +32,10 @@ public class Pit extends Container{
     this.amountStones = 0;
   }
 
-  public void distributeStones(int amountStones) {
+  public void distributeStones(int amountStonesReceived) {
     this.amountStones = this.amountStones + 1;
-    if(amountStones > 1){
-      this.nextContainer.distributeStones(amountStones - 1);
+    if(amountStonesReceived > 1){
+      this.nextContainer.distributeStones(amountStonesReceived - 1);
     }
   }
 }
