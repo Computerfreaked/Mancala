@@ -37,5 +37,8 @@ public class Pit extends Container{
     if(amountStonesReceived > 1){
       this.nextContainer.distributeStones(amountStonesReceived - 1);
     }
+    else {
+      this.owner.switchTurn();
+    }
   }
 }
