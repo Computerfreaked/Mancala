@@ -9,4 +9,7 @@ public class Kalaha extends Container{
   public Kalaha(Player player) {
     this.owner = player;
   }
+
+  public void distributeStones(int amountStones) {
+  }
 }
