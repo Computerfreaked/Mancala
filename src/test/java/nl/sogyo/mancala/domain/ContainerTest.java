@@ -4,17 +4,16 @@ import static org.junit.jupiter.api.Assertions.*;
 import org.junit.jupiter.api.Test;
 
 public class ContainerTest {
-  private class ContainerExtender extends Container{
+  private class ContainerStub extends Container{
     @Override
     public void distributeStones(int amountStones) {
       // not used
-
     }
   }
 
-  ContainerExtender container1 = new ContainerExtender();
-  ContainerExtender container2 = new ContainerExtender();
-  ContainerExtender container3 = new ContainerExtender();
+  ContainerStub container1 = new ContainerStub();
+  ContainerStub container2 = new ContainerStub();
+  ContainerStub container3 = new ContainerStub();
 
   @Test
   public void container_SetNextContainer_NextContainerIsUpdated(){
