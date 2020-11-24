@@ -19,4 +19,8 @@ public class Kalaha extends Container{
       this.nextContainer.distributeStones(amountStonesReceived);
     }
   }
+
+  public void receiveStones(int amountReceived){
+    this.amountStones = this.amountStones + amountReceived;
+  }
 }

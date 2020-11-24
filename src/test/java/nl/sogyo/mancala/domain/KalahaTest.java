@@ -40,4 +40,14 @@ public class KalahaTest {
     }
     assertEquals(4, pitToPlay.getNextContainer(6).getAmountStones(), "Too many stones distributed");
   }
+
+  @Test
+  public void kalaha_ReceiveStonesWithAmount5_KalahaHas5StonesMore(){
+    Kalaha kalaha1 = new Kalaha();
+
+    int amountBefore = kalaha1.getAmountStones();
+    kalaha1.receiveStones(5);
+
+    assertEquals(amountBefore + 5, kalaha1.getAmountStones(), "Kalaha did not accept the stones");
+  }
 }
