@@ -1,11 +1,23 @@
 package nl.sogyo.mancala.domain;
 public class Pit extends Container{
   public Pit(){
-    this.amountStones = 4;
+    this.nextContainer = new Pit(2, true);
+  }
+
+  public Pit(int amount, boolean newsetup){
+    if((amount + 1) % 7 == 0){
+      this.nextContainer = new Kalaha(amount + 1);
+    }
+    else if(amount + 1 < 7){
+      this.nextContainer = new Pit(amount + 1, true);
+    }
+    else if(amount + 1 < 14){
+      this.nextContainer = new Pit(amount + 1, true);
+    }
   }
 
   public Pit(int amount){
-    this();
+    this.amountStones = 4;
 
     if(amount > 1){
       this.nextContainer = new Pit(amount - 1);
@@ -16,7 +28,7 @@ public class Pit extends Container{
   }
 
   public Pit(int amount, Player player) {
-    this();
+    this.amountStones = 4;
     this.owner = player;
 
     if(amount > 1){

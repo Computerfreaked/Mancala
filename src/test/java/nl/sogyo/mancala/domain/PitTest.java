@@ -13,6 +13,21 @@ public class PitTest {
   }
 
   @Test
+  public void pit_Pit_6Pits1Kalaha6pits1KalahaCreated(){
+    Pit pit1 = new Pit();
+
+    int i;
+    for(i=0; i <=5; i++){
+      assertTrue(pit1.getNextContainer(i) instanceof Pit, "Error in creating first 6 pits");
+    }
+    assertTrue(pit1.getNextContainer(6) instanceof Kalaha, "First kalaha not created");
+    for(i=7; i <=12; i++){
+      assertTrue(pit1.getNextContainer(i) instanceof Pit, "Error in creating second 6 pits");
+    }
+    assertTrue(pit1.getNextContainer(13) instanceof Kalaha, "Error in creating second Kalaha");
+  }
+
+  @Test
   public void pit_PitWithAmount6_6PitsAreCreatedAndChainedButNotMore(){
     Pit pit1 = new Pit(6);
 
