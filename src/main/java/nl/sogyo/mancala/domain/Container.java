@@ -46,4 +46,11 @@ public class Container {
     this.opposite.setOppositeContainer(this);
     return oppositeHowMuchAhead + 2;
   }
+
+  public void distributeStones(int amountStones) {
+    this.amountStones = this.amountStones + 1;
+    if(amountStones > 1){
+      this.nextContainer.distributeStones(amountStones - 1);
+    }
+  }
 }

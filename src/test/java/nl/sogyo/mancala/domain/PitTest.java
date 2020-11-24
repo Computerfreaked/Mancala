@@ -45,4 +45,17 @@ public class PitTest {
       assertEquals(player1, pit1.getNextContainer(i).getOwner(), "Owner of a pit is not properly set");
     }
   }
+
+  @Test
+  public void pit_Play_StonesDistributed(){
+    Player player1 = new Player();
+
+    player1.getFirstPit().play();
+
+    assertEquals(0, player1.getFirstPit().getAmountStones(), "Played pit not empty");
+    for(int i = 1; i <5; i++){
+      assertEquals(5, player1.getFirstPit().getNextContainer(i).getAmountStones(), "Stones not properly distributed");
+    }
+    assertEquals(4, player1.getFirstPit().getNextContainer(5).getAmountStones(), "Too many stones distributed");
+  }
 }

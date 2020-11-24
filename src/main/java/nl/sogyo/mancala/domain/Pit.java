@@ -26,4 +26,9 @@ public class Pit extends Container{
       this.nextContainer = new Kalaha(player);
     }
   }
+
+  public void play() {
+    this.nextContainer.distributeStones(this.amountStones);
+    this.amountStones = 0;
+  }
 }
