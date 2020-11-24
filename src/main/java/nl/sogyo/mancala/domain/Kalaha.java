@@ -10,13 +10,13 @@ public class Kalaha extends Container{
     this.owner = player;
   }
 
-  public void distributeStones(int amountStonesReceived) {
+  public void distributeStones(int amountStonesToPass) {
     if(this.owner.getHasTurn() == true){
       this.amountStones = this.amountStones + 1;
-      amountStonesReceived = amountStonesReceived - 1;
+      amountStonesToPass = amountStonesToPass - 1;
     }
-    if(amountStonesReceived > 0){
-      this.nextContainer.distributeStones(amountStonesReceived);
+    if(amountStonesToPass > 0){
+      this.nextContainer.distributeStones(amountStonesToPass);
     }
   }
 
