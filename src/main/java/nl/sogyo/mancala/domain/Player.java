@@ -35,4 +35,14 @@ public class Player {
     this.firstPit.getNextContainer(6).setNextContainer(otherPlayerFirstPit);
     return this.firstPit;
   }
+
+  public void switchTurn() {
+    if(this.hasTurn){
+      this.hasTurn = false;
+      this.opponent.switchTurn();
+    }
+    else {
+      this.hasTurn = true;
+    }
+  }
 }
