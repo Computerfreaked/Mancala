@@ -8,6 +8,7 @@ public class PitTest {
   public void pit_PitWithAmount6_6PitsAreCreatedAndChainedButNotMore(){
     Pit pit1 = new Pit(6);
 
+    assertTrue(pit1 instanceof Pit, "A Pit was not created or improperly linked");
     for(int i=1; i<6; i++){
       assertTrue(pit1.getNextContainer(i) instanceof Pit, "A Pit was not created or improperly linked");
     }
@@ -27,6 +28,7 @@ public class PitTest {
   public void pit_PitWithAmount6_AllPitsHave4Stones(){
     Pit pit1 = new Pit(6);
 
+    assertEquals(4, pit1.getAmountStones(), "Not all pits have 4 stones when created");
     for(int i = 1; i < 6; i++){
       assertEquals(4, pit1.getNextContainer(i).getAmountStones(), "Not all pits have 4 stones when created");
     }
@@ -38,6 +40,7 @@ public class PitTest {
 
     Pit pit1 = new Pit(6, player1);
 
+    assertEquals(player1, pit1.getOwner(), "Owner of a pit is not properly set");
     for(int i = 1; i < 7; i++){
       assertEquals(player1, pit1.getNextContainer(i).getOwner(), "Owner of a pit is not properly set");
     }
