@@ -15,7 +15,7 @@ public class Kalaha extends Container{
       this.amountStones = this.amountStones + 1;
       amountStonesReceived = amountStonesReceived - 1;
     }
-    if(amountStonesReceived > 1){
+    if(amountStonesReceived > 0){
       this.nextContainer.distributeStones(amountStonesReceived);
     }
   }
