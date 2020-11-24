@@ -4,11 +4,19 @@ import static org.junit.jupiter.api.Assertions.*;
 import org.junit.jupiter.api.Test;
 
 public class ContainerTest {
+  private class ContainerStub extends Container{
+    @Override
+    public void distributeStones(int amountStones) {
+      // not used
+    }
+  }
+
+  ContainerStub container1 = new ContainerStub();
+  ContainerStub container2 = new ContainerStub();
+  ContainerStub container3 = new ContainerStub();
+
   @Test
   public void container_SetNextContainer_NextContainerIsUpdated(){
-    Container container1 = new Container();
-    Container container2 = new Container();
-
     container1.setNextContainer(container2);
 
     assertSame(container2, container1.getNextContainer(1), "Failed to set nextPit");
@@ -16,10 +24,6 @@ public class ContainerTest {
 
   @Test
   public void container_GetNextContainerWithHowOften2_Container3IsReturned(){
-    Container container1 = new Container();
-    Container container2 = new Container();
-    Container container3 = new Container();
-
     container1.setNextContainer(container2);
     container2.setNextContainer(container3);
 

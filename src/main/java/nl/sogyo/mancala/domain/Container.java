@@ -1,6 +1,6 @@
 package nl.sogyo.mancala.domain;
 
-public class Container {
+public abstract class Container {
   protected Container nextContainer;
   protected int amountStones;
   protected Player owner;
@@ -46,4 +46,6 @@ public class Container {
     this.opposite.setOppositeContainer(this);
     return oppositeHowMuchAhead + 2;
   }
+
+  public abstract void distributeStones(int amountStones);
 }
