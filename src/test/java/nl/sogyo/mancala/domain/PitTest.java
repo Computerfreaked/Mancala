@@ -4,10 +4,10 @@ import static org.junit.jupiter.api.Assertions.*;
 import org.junit.jupiter.api.Test;
  
 public class PitTest {
-  private void doGrossErrorCheck(Player player1){
-    int totalAmount = player1.getFirstPit().getAmountStones();
+  private void doGrossErrorCheck(Pit firstPit){
+    int totalAmount = firstPit.getAmountStones();
     for (int i=1; i < 14; i++){
-      totalAmount = totalAmount + player1.getFirstPit().getNextContainer(i).getAmountStones();
+      totalAmount = totalAmount + firstPit.getNextContainer(i).getAmountStones();
     }
     assertEquals(48, totalAmount, "Incorrect number of total stones");
   }
@@ -135,7 +135,7 @@ public class PitTest {
 
     Kalaha receivingKalaha = (Kalaha) player1.getOpponent().getFirstPit().getNextContainer(6);
 
-    doGrossErrorCheck(player1);
+    doGrossErrorCheck(player1.getFirstPit());
 
     assertEquals( 0,
                   firstPitToPlay.getAmountStones(),
@@ -159,7 +159,7 @@ public class PitTest {
 
     Kalaha receivingKalaha = (Kalaha) player1.getOpponent().getFirstPit().getNextContainer(6);
 
-    doGrossErrorCheck(player1);
+    doGrossErrorCheck(player1.getFirstPit());
 
     assertEquals(1, firstPitToPlay.getAmountStones(), "Stones were incorrectly taken from first Pit");
     assertEquals(1, receivingKalaha.getAmountStones(), "Some stones were moved to Kalaha and they should not");
