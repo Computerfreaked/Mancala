@@ -7,15 +7,11 @@ public class Player {
 
   public Player(){
     this.hasTurn = true;
-    this.firstPit = new Pit(6, this);
     this.opponent = new Player(this);
-    linkPitSeq(this.opponent.linkPitSeq(this.firstPit));
-    this.firstPit.setAllOpposites();
   }
 
   public Player(Player opponent){
     this.hasTurn = false;
-    this.firstPit = new Pit(6, this);
     this.opponent = opponent;
   }
 
@@ -28,11 +24,6 @@ public class Player {
   }
 
   public Pit getFirstPit(){
-    return this.firstPit;
-  }
-
-  public Pit linkPitSeq(Pit otherPlayerFirstPit){
-    this.firstPit.getNextContainer(6).setNextContainer(otherPlayerFirstPit);
     return this.firstPit;
   }
 

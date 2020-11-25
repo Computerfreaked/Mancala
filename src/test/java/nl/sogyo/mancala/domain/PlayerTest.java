@@ -23,24 +23,21 @@ public class PlayerTest {
   }
 
   @Test
-  public void player_NewPlayer_ThePlayerAndOpponenHaveASequenceOfPitsAndAKalaha(){
-    assertTrue(player1.getFirstPit() instanceof Pit, "Player does not have a sequence of containers");
-    assertTrue(player1.getOpponent().getFirstPit() instanceof Pit, "Players opponent does not have sequence of containers");
-  }
-
-  @Test
-  public void player_NewPlayer_OpponenIsInformedAboutFirstContainerAndUpdatesNextContainerOfKalahaReturnsOwnFirstContainerOwnKalahaNextContainerUpdated(){
-    assertSame(player1.getFirstPit(), player1.getFirstPit().getNextContainer(14));
-  }
-
-  @Test
   public void player_SwitchTurn_TurnsAreSwitched(){
     player1.switchTurn();
-    assertFalse(player1.getHasTurn(), "player 1 should not have the turn");
-    assertTrue(player1.getOpponent().getHasTurn(), "opponent of player1 should have the turn");
+    assertFalse(player1.getHasTurn(), "player 1 should not have the turn after first switch");
+    assertTrue(player1.getOpponent().getHasTurn(), "opponent of player1 should have the turn  after first switch");
 
-    player1.getFirstPit().play();
+    player1.switchTurn();
     assertTrue(player1.getHasTurn(), "player 1 should not have the turn after second switch");
     assertFalse(player1.getOpponent().getHasTurn(), "opponent of player1 should have the turn after second switch");
+
+    player1.getOpponent().switchTurn();
+    assertFalse(player1.getHasTurn(), "opponent should not have the turn after third switch");
+    assertTrue(player1.getOpponent().getHasTurn(), "opponent of player1 should have the turn  after third switch");
+
+    player1.getOpponent().switchTurn();
+    assertTrue(player1.getHasTurn(), "player 1 should not have the turn after fourth switch");
+    assertFalse(player1.getOpponent().getHasTurn(), "opponent of player1 should have the turn after fourth switch");
   }
 }
