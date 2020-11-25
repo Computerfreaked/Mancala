@@ -82,17 +82,17 @@ public class PitTest {
     assertEquals(4, pit1.getNextContainer(5).getAmountStones(), "Too many stones distributed");
   }
 
-  // ----------------------------- new stuff above
-
   @Test
   public void pit_Play_AfterStonesDistributionSwitchHasTurn(){
-    Player player1 = new Player();
-
-    player1.getFirstPit().play();
+    Pit pit1 = new Pit();
     
-    assertFalse(player1.getHasTurn(), "player 1 should not have the turn");
-    assertTrue(player1.getOpponent().getHasTurn(), "opponent of player1 should have the turn");
+    pit1.play();
+    
+    assertFalse(pit1.getOwner().getHasTurn(), "player 1 should not have the turn");
+    assertTrue(pit1.getOwner().getOpponent().getHasTurn(), "opponent of player1 should have the turn");
   }
+
+// ----------------------------- new stuff above
 
   @Test
   public void pit_PlaySomePitWith0Stones_PlayerTurnsShouldNotBeSwitched(){
