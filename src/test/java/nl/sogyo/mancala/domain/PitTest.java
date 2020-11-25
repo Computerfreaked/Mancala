@@ -143,16 +143,14 @@ public class PitTest {
     assertEquals(1, receivingKalaha.getAmountStones(), "Some stones were moved to Kalaha and they should not");
   }
 
-// ----------------------------- new stuff above
-
   @Test
   public void pit_sendStonesToKalaha_ReceivedAmountAndOwnAmountSentToKalaha(){
-    Player player1 = new Player();
+    Pit pit1 = new Pit();
 
-    Pit instructedPit = (Pit) player1.getFirstPit().getOppositeContainer();
+    Pit instructedPit = (Pit) pit1.getNextContainer(12);
     instructedPit.sendStonesToKalaha(2);
 
     assertEquals(0, instructedPit.getAmountStones(), "Instrcuted pit to send stones should be empty");
-    assertEquals(6, player1.getFirstPit().getNextContainer(6).getAmountStones(), "Not all stones ended up in the Kalaha");
+    assertEquals(6, pit1.getNextContainer(6).getAmountStones(), "Not all stones ended up in the Kalaha");
   }
 }
