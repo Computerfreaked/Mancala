@@ -36,7 +36,7 @@ public class KalahaTest {
 
   @Test
   public void kalaha_ReceiveStonesWithAmount5_KalahaHas5StonesMore(){
-    Kalaha kalaha1 = new Kalaha();
+    Kalaha kalaha1 = new Kalaha(7, new Player());
 
     int amountBefore = kalaha1.getAmountStones();
     kalaha1.receiveStones(5);
