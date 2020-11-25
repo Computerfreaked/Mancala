@@ -92,17 +92,17 @@ public class PitTest {
     assertTrue(pit1.getOwner().getOpponent().getHasTurn(), "opponent of player1 should have the turn");
   }
 
-// ----------------------------- new stuff above
-
   @Test
   public void pit_PlaySomePitWith0Stones_PlayerTurnsShouldNotBeSwitched(){
-    Player player1 = new Player();
+    Pit pit1 = new Pit();
 
-    player1.getFirstPit().play();
-    player1.getFirstPit().play();
+    pit1.play();
+    pit1.play();
 
-    assertFalse(player1.getHasTurn(), "Turns should not have been switched");
+    assertFalse(pit1.getOwner().getHasTurn(), "Turns should not have been switched");
   }
+
+  // ----------------------------- new stuff above
 
   @Test
   public void pit_PlayEndsOnOwnEmptyPit_PitStoneAndOppositeStonesToOwnKalaha(){
