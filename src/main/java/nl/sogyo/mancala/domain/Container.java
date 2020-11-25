@@ -47,5 +47,14 @@ public abstract class Container {
     return oppositeHowMuchAhead + 2;
   }
 
+  public Kalaha findKalaha(Player owner){
+    if(this instanceof Kalaha && this.owner == owner){
+      return (Kalaha) this;
+    }
+    else {
+      return this.getNextContainer(1).findKalaha(owner);
+    }
+  }
+
   public abstract void distributeStones(int amountStones);
 }

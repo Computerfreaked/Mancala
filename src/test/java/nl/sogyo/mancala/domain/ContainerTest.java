@@ -42,4 +42,14 @@ public class ContainerTest {
       );
     }
   }
+
+  @Test
+  public void container_FindKalahaWithOpponent_KalahaFound(){
+    Pit pit1 = new Pit();
+    
+    assertSame( pit1.getNextContainer(13),
+                pit1.findKalaha(pit1.getOwner().getOpponent()),
+                "Incorrect or no Kalaha found"
+    );
+  }
 }
