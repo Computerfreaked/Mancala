@@ -10,26 +10,26 @@ public class Pit extends Container{
     this.getNextContainer(13).setNextContainer(this);
   }
 
-  public Pit(int amount, Player player){
+  public Pit(int containerNumber, Player player){
     this.amountStones = 4;
 
-    if((amount + 1) % 14 == 0){
+    if((containerNumber + 1) % 14 == 0){
       this.owner = player.getOpponent();
-      this.nextContainer = new Kalaha(amount + 1, player);
+      this.nextContainer = new Kalaha(containerNumber + 1, player);
     }
-    else if((amount + 1) % 7 == 0){
+    else if((containerNumber + 1) % 7 == 0){
       this.owner = player;
-      this.nextContainer = new Kalaha(amount + 1, player);
-      attachOppositePits(amount);
+      this.nextContainer = new Kalaha(containerNumber + 1, player);
+      attachOppositePits(containerNumber);
     }
-    else if(amount + 1 < 7){
+    else if(containerNumber + 1 < 7){
       this.owner = player;
-      this.nextContainer = new Pit(amount + 1, player);
-      attachOppositePits(amount);
+      this.nextContainer = new Pit(containerNumber + 1, player);
+      attachOppositePits(containerNumber);
     }
-    else if(amount + 1 < 14){
+    else if(containerNumber + 1 < 14){
       this.owner = player.getOpponent();
-      this.nextContainer = new Pit(amount + 1, player);
+      this.nextContainer = new Pit(containerNumber + 1, player);
     }
   }
 
