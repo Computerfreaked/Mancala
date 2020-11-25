@@ -31,7 +31,7 @@ public class ContainerTest {
   }
 
   @Test
-  public void container_NewPlayer_AllPitsHaveAnOpposite(){
+  public void container_NewPit_AllPitsHaveAnOpposite(){
     Pit pit1 = new Pit();
 
     assertSame(pit1, pit1.getOppositeContainer().getOppositeContainer(), "Improper opposite on pit");
