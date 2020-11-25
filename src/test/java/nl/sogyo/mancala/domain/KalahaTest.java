@@ -21,9 +21,9 @@ public class KalahaTest {
 
   @Test
   public void kalaha_PlayPassingOpponentKalaha_StonesNotAcceptedByKalaha(){
-    Player player1 = new Player();
+    Pit pit1 = new Pit();
 
-    Pit pitToPlay = (Pit) player1.getOpponent().getFirstPit().getNextContainer(5);
+    Pit pitToPlay = (Pit) pit1.getNextContainer(12);
     pitToPlay.play();
 
     assertEquals(0, pitToPlay.getAmountStones(), "Played pit not empty");
