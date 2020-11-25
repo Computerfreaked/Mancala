@@ -4,6 +4,8 @@ import static org.junit.jupiter.api.Assertions.*;
 import org.junit.jupiter.api.Test;
  
 public class PitTest {
+  Pit pit1 = new Pit();
+
   private void doGrossErrorCheck(Pit firstPit){
     int totalAmount = firstPit.getAmountStones();
     for (int i=1; i < 14; i++){
@@ -14,8 +16,6 @@ public class PitTest {
 
   @Test
   public void pit_Pit_6Pits1Kalaha6pits1KalahaCreated(){
-    Pit pit1 = new Pit();
-
     assertTrue(pit1 instanceof Pit, "Error in creating first pit");
     int i;
     for(i=1; i <=5; i++){
@@ -30,15 +30,11 @@ public class PitTest {
 
   @Test
   public void pit_Pit_LastKalahaIsLinkedToFirstPit(){
-    Pit pit1 = new Pit();
-
     assertSame(pit1, pit1.getNextContainer(14), "Last kalaha not linked to first Pit");
   }
 
   @Test
   public void pit_Pit_AllPitsHave4StonesAndKalahasHave0(){
-    Pit pit1 = new Pit();
-
     assertEquals(4, pit1.getAmountStones(), "First pit does not have 4 stones");
     int i;
     for(i=1; i <=5; i++){
@@ -55,8 +51,6 @@ public class PitTest {
 
   @Test
   public void pit_Pit_First6PitsAndKalahaAreOwnedByPlayerRestByPlayerOpponent(){
-    Pit pit1 = new Pit();
-
     assertTrue(pit1.getOwner() instanceof Player, "No player assigned to pit1");
     int i;
     for(i=1; i <=5; i++){
@@ -71,8 +65,6 @@ public class PitTest {
 
   @Test
   public void pit_Play_StonesDistributed(){
-    Pit pit1 = new Pit();
-
     pit1.play();
 
     assertEquals(0, pit1.getAmountStones(), "Played pit not empty");
@@ -84,8 +76,6 @@ public class PitTest {
 
   @Test
   public void pit_Play_AfterStonesDistributionSwitchHasTurn(){
-    Pit pit1 = new Pit();
-    
     pit1.play();
     
     assertFalse(pit1.getOwner().getHasTurn(), "player 1 should not have the turn");
@@ -94,8 +84,6 @@ public class PitTest {
 
   @Test
   public void pit_PlaySomePitWith0Stones_PlayerTurnsShouldNotBeSwitched(){
-    Pit pit1 = new Pit();
-
     pit1.play();
     pit1.play();
 
@@ -104,8 +92,6 @@ public class PitTest {
 
   @Test
   public void pit_PlayEndsOnOwnEmptyPit_PitStoneAndOppositeStonesToOwnKalaha(){
-    Pit pit1 = new Pit();
-
     Pit firstPitToPlay = (Pit) pit1.getNextContainer(7);
     Pit secondPitToPlay = (Pit) pit1.getNextContainer(2);
     firstPitToPlay.play();
@@ -128,8 +114,6 @@ public class PitTest {
 
   @Test
   public void pit_PlayEndsOnOpponentEmptyPit_NoExtraStonesAreMovedToKalaha(){
-    Pit pit1 = new Pit();
-
     Pit firstPitToPlay = pit1;
     Pit secondPitToPlay = (Pit) pit1.getNextContainer(10);
     firstPitToPlay.play();
@@ -145,8 +129,6 @@ public class PitTest {
 
   @Test
   public void pit_sendStonesToKalaha_ReceivedAmountAndOwnAmountSentToKalaha(){
-    Pit pit1 = new Pit();
-
     Pit instructedPit = (Pit) pit1.getNextContainer(12);
     instructedPit.sendStonesToKalaha(2);
 
