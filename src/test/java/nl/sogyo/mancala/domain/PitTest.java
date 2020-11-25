@@ -126,24 +126,24 @@ public class PitTest {
     assertEquals(6, receivingKalaha.getAmountStones(), "Stones were not moved to Kalaha");
   }
 
-// ----------------------------- new stuff above
-
   @Test
   public void pit_PlayEndsOnOpponentEmptyPit_NoExtraStonesAreMovedToKalaha(){
-    Player player1 = new Player();
+    Pit pit1 = new Pit();
 
-    Pit firstPitToPlay = player1.getFirstPit();
-    Pit secondPitToPlay = (Pit) player1.getOpponent().getFirstPit().getNextContainer(3);
+    Pit firstPitToPlay = pit1;
+    Pit secondPitToPlay = (Pit) pit1.getNextContainer(10);
     firstPitToPlay.play();
     secondPitToPlay.play();
 
-    Kalaha receivingKalaha = (Kalaha) player1.getOpponent().getFirstPit().getNextContainer(6);
+    Kalaha receivingKalaha = (Kalaha) pit1.getNextContainer(13);
 
-    doGrossErrorCheck(player1.getFirstPit());
+    doGrossErrorCheck(pit1);
 
     assertEquals(1, firstPitToPlay.getAmountStones(), "Stones were incorrectly taken from first Pit");
     assertEquals(1, receivingKalaha.getAmountStones(), "Some stones were moved to Kalaha and they should not");
   }
+
+// ----------------------------- new stuff above
 
   @Test
   public void pit_sendStonesToKalaha_ReceivedAmountAndOwnAmountSentToKalaha(){
