@@ -67,7 +67,7 @@ public class Pit extends Container{
   }
 
   public void sendStonesToKalaha(int amountFromOtherPit) {
-    Kalaha receivingKalaha = (Kalaha) this.owner.getOpponent().getFirstPit().getNextContainer(6);
+    Kalaha receivingKalaha = this.getNextContainer(1).findKalaha(this.getOwner().getOpponent());
     receivingKalaha.receiveStones(this.amountStones + amountFromOtherPit);
     this.amountStones = 0;
   }

@@ -102,20 +102,18 @@ public class PitTest {
     assertFalse(pit1.getOwner().getHasTurn(), "Turns should not have been switched");
   }
 
-  // ----------------------------- new stuff above
-
   @Test
   public void pit_PlayEndsOnOwnEmptyPit_PitStoneAndOppositeStonesToOwnKalaha(){
-    Player player1 = new Player();
+    Pit pit1 = new Pit();
 
-    Pit firstPitToPlay = player1.getOpponent().getFirstPit();
-    Pit secondPitToPlay = (Pit) player1.getFirstPit().getNextContainer(2);
+    Pit firstPitToPlay = (Pit) pit1.getNextContainer(7);
+    Pit secondPitToPlay = (Pit) pit1.getNextContainer(2);
     firstPitToPlay.play();
     secondPitToPlay.play();
 
-    Kalaha receivingKalaha = (Kalaha) player1.getOpponent().getFirstPit().getNextContainer(6);
+    Kalaha receivingKalaha = (Kalaha) pit1.getNextContainer(13);
 
-    doGrossErrorCheck(player1.getFirstPit());
+    doGrossErrorCheck(pit1);
 
     assertEquals( 0,
                   firstPitToPlay.getAmountStones(),
@@ -127,6 +125,8 @@ public class PitTest {
     );
     assertEquals(6, receivingKalaha.getAmountStones(), "Stones were not moved to Kalaha");
   }
+
+// ----------------------------- new stuff above
 
   @Test
   public void pit_PlayEndsOnOpponentEmptyPit_NoExtraStonesAreMovedToKalaha(){
