@@ -29,8 +29,6 @@ public class Pit extends Container{
       this.owner = player.getOpponent();
       this.nextContainer = new Pit(amount + 1, player, true);
     }
-
-
   }
 
   public void play() {
