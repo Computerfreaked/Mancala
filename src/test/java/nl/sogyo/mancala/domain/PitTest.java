@@ -75,7 +75,7 @@ public class PitTest {
   }
 
   @Test
-  public void pit_Play_AfterStonesDistributionSwitchHasTurn(){
+  public void pit_Play_AfterStonesDistributionSwitchPlayersHasTurn(){
     pit1.play();
     
     assertFalse(pit1.getOwner().getHasTurn(), "player 1 should not have the turn");
@@ -128,7 +128,7 @@ public class PitTest {
   }
 
   @Test
-  public void pit_sendStonesToKalaha_ReceivedAmountAndOwnAmountSentToKalaha(){
+  public void pit_SendStonesToKalaha_ReceivedAmountAndOwnAmountSentToKalaha(){
     Pit instructedPit = (Pit) pit1.getNextContainer(12);
     instructedPit.sendStonesToKalaha(2);
 
