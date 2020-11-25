@@ -33,20 +33,6 @@ public abstract class Container {
     return this.opposite;
   }
 
-  public int setAllOpposites(){
-    int oppositeHowMuchAhead;
-
-    if(this.nextContainer instanceof Kalaha){
-      oppositeHowMuchAhead = 2;
-    }
-    else {
-      oppositeHowMuchAhead = this.nextContainer.setAllOpposites();
-    }
-    this.opposite = this.getNextContainer(oppositeHowMuchAhead);
-    this.opposite.setOppositeContainer(this);
-    return oppositeHowMuchAhead + 2;
-  }
-
   public Kalaha findKalaha(Player owner){
     if(this instanceof Kalaha && this.owner == owner){
       return (Kalaha) this;
