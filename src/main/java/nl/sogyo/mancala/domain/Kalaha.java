@@ -6,7 +6,7 @@ public class Kalaha extends Container{
 
     if(amount == 7){
       this.owner = player;
-      this.nextContainer = new Pit(amount + 1, player, true);
+      this.nextContainer = new Pit(amount + 1, player);
     }
     else {
       this.owner = player.getOpponent();

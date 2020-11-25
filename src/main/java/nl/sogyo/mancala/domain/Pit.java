@@ -4,13 +4,13 @@ public class Pit extends Container{
     this.amountStones = 4;
     this.owner = new Player();
     
-    this.nextContainer = new Pit(2, this.owner, true);
+    this.nextContainer = new Pit(2, this.owner);
     this.getNextContainer(13).setNextContainer(this);
 
     this.setAllOpposites();
   }
 
-  public Pit(int amount, Player player, boolean newsetup){
+  public Pit(int amount, Player player){
     this.amountStones = 4;
 
     if((amount + 1) % 14 == 0){
@@ -23,11 +23,11 @@ public class Pit extends Container{
     }
     else if(amount + 1 < 7){
       this.owner = player;
-      this.nextContainer = new Pit(amount + 1, player, true);
+      this.nextContainer = new Pit(amount + 1, player);
     }
     else if(amount + 1 < 14){
       this.owner = player.getOpponent();
-      this.nextContainer = new Pit(amount + 1, player, true);
+      this.nextContainer = new Pit(amount + 1, player);
     }
   }
 
