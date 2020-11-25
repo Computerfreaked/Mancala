@@ -6,9 +6,9 @@ import org.junit.jupiter.api.Test;
 public class KalahaTest {
   @Test
   public void kalaha_PlayPassingOwnKalaha_StonesAcceptedByKalaha(){
-    Player player1 = new Player();
+    Pit pit1 = new Pit();
 
-    Pit pitToPlay = (Pit) player1.getFirstPit().getNextContainer(3);
+    Pit pitToPlay = (Pit) pit1.getNextContainer(3);
     pitToPlay.play();
 
     assertEquals(0, pitToPlay.getAmountStones(), "Played pit not empty");
