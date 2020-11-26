@@ -135,4 +135,10 @@ public class PitTest {
     assertEquals(0, instructedPit.getAmountStones(), "Instrcuted pit to send stones should be empty");
     assertEquals(6, pit1.getNextContainer(6).getAmountStones(), "Not all stones ended up in the Kalaha");
   }
+
+  @Test
+  public void pit_PitFirstPitOfEachPlayerSendsItsRefToPlayer_PlayersFirstPitRefUpdated(){
+    assertSame(pit1, pit1.getOwner().getFirstPit(), "Player was not correctly informed about his first pit");
+    assertSame(pit1.getNextContainer(7), pit1.getNextContainer(7).getOwner().getFirstPit(), "Player opponent was not correctly informed about his first pit");
+  }
 }
