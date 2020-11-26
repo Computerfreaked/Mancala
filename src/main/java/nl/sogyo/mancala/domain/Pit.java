@@ -43,7 +43,7 @@ public class Pit extends Container{
   }
 
   public void play() {
-    if(this.amountStones == 0){
+    if(this.amountStones == 0 || !this.owner.getHasTurn()){
       return;
     }
 

@@ -85,9 +85,19 @@ public class PitTest {
   @Test
   public void pit_PlaySomePitWith0Stones_PlayerTurnsShouldNotBeSwitched(){
     pit1.play();
+    Pit pitToPlay = (Pit) pit1.getNextContainer(7);
+    pitToPlay.play();
     pit1.play();
 
-    assertFalse(pit1.getOwner().getHasTurn(), "Turns should not have been switched");
+    assertTrue(pit1.getOwner().getHasTurn(), "Turns should not have been switched");
+  }
+
+  @Test
+  public void pit_PlayAnOpponentPit_TurnNotPerformed(){
+    Pit pitToPlay = (Pit) pit1.getNextContainer(7);
+    pitToPlay.play();
+
+    assertEquals(4, pitToPlay.getAmountStones(), "The pit was played but it is not this players turn");
   }
 
   @Test
