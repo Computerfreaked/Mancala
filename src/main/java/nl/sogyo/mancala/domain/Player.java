@@ -1,7 +1,5 @@
 package nl.sogyo.mancala.domain;
 
-import java.util.function.BooleanSupplier;
-
 public class Player {
   private Player opponent;
   private boolean hasTurn;
