@@ -102,24 +102,24 @@ public class PitTest {
 
   @Test
   public void pit_PlayEndsOnOwnEmptyPit_PitStoneAndOppositeStonesToOwnKalaha(){
-    Pit firstPitToPlay = (Pit) pit1.getNextContainer(7);
-    Pit secondPitToPlay = (Pit) pit1.getNextContainer(2);
+    Pit firstPitToPlay = (Pit) pit1.getNextContainer(5);
+    Pit secondPitToPlay = (Pit) pit1.getNextContainer(9);
+    Pit thirdPitToPlay = (Pit) pit1.getNextContainer(1);
     firstPitToPlay.play();
     secondPitToPlay.play();
+    thirdPitToPlay.play();
 
-    Kalaha receivingKalaha = (Kalaha) pit1.getNextContainer(13);
-
-    doGrossErrorCheck(pit1);
+    Kalaha receivingKalaha = pit1.findKalaha(pit1.owner);
 
     assertEquals( 0,
                   firstPitToPlay.getAmountStones(),
-                 "The turn ended on own pit and it was previsouly empty. The stone should have been moved to Kalaha"
+                 "The turn ended on own, previously empty pit. The stone should have been moved to Kalaha"
     );
     assertEquals( 0,
                   firstPitToPlay.getOppositeContainer().getAmountStones(),
-                  "The turn ended on own pit and it was previsouly empty. The stones in this opposite pit should have been moved to Kalaha"
+                  "The turn ended on own, previously empty pit. The stones in the opposite pit should have been moved to Kalaha"
     );
-    assertEquals(6, receivingKalaha.getAmountStones(), "Stones were not moved to Kalaha");
+    assertEquals(7, receivingKalaha.getAmountStones(), "Stones were not moved to Kalaha");
   }
 
   @Test
