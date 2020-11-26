@@ -1,9 +1,12 @@
 package nl.sogyo.mancala.domain;
 
+import java.util.function.BooleanSupplier;
+
 public class Player {
   private Player opponent;
   private boolean hasTurn;
   private Pit firstPit;
+  private static boolean gameOn = true;
 
   public Player(){
     this.hasTurn = true;
@@ -31,12 +34,24 @@ public class Player {
     this.firstPit = pit;
   }
 
+  public static boolean getGameOn() {
+    return Player.gameOn;
+  }
+
+  public static void setGameOn(boolean gameOn) {
+    Player.gameOn = gameOn;
+  }
+
+
   public void switchTurn() {
     if(this.hasTurn){
       this.hasTurn = false;
     }
     else {
       this.hasTurn = true;
+      if(getAmountOfStonesInPits() == 0){
+        Player.setGameOn(false);
+      }
     }
 
     if(this.hasTurn == this.opponent.getHasTurn()){

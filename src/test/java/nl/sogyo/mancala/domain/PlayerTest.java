@@ -47,4 +47,57 @@ public class PlayerTest {
 
     assertEquals(24, pit1.owner.getAmountOfStonesInPits(), "Calculated amount of stones incorrect");
   }
+
+
+  @Test
+  public void player_SwitchTurnNoStonesInPitsAtBeginningOfTurn_SetPlayerGameOnFalse(){
+    Pit pit1 = new Pit();
+
+    Pit pitToPlay = (Pit) pit1.getNextContainer(2);
+    pitToPlay.play();
+
+    pitToPlay = (Pit) pit1.getNextContainer(12);
+    pitToPlay.play();
+
+    pitToPlay = (Pit) pit1.getNextContainer(1);
+    pitToPlay.play();
+
+    pitToPlay = (Pit) pit1.getNextContainer(8);
+    pitToPlay.play();
+
+    pitToPlay = (Pit) pit1.getNextContainer(2);
+    pitToPlay.play();
+    
+    pitToPlay = (Pit) pit1.getNextContainer(9);
+    pitToPlay.play();
+
+    pitToPlay = (Pit) pit1.getNextContainer(9);
+    pitToPlay.play();
+
+    pitToPlay = (Pit) pit1.getNextContainer(3);
+    pitToPlay.play();
+
+    pitToPlay = (Pit) pit1.getNextContainer(4);
+    pitToPlay.play();
+
+    pitToPlay = (Pit) pit1.getNextContainer(7);
+    pitToPlay.play();
+
+    pitToPlay = (Pit) pit1.getNextContainer(5);
+    pitToPlay.play();
+
+    pitToPlay = (Pit) pit1.getNextContainer(8);
+    pitToPlay.play();
+
+    pit1.play();
+
+    //after this move by opponent all players pits are empty
+    pitToPlay = (Pit) pit1.getNextContainer(7);
+    pitToPlay.play();
+
+
+    assertFalse(  Player.getGameOn(), 
+                  "All pits of this player are empty at the beginning of his turn so he should have stopped the game."
+    );
+  }
 }
