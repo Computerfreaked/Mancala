@@ -5,6 +5,7 @@ public class Player {
   private boolean hasTurn;
   private Pit firstPit;
   private static boolean gameOn = true;
+  int score = 0;
 
   public Player(){
     this.hasTurn = true;
@@ -55,6 +56,10 @@ public class Player {
     if(this.hasTurn == this.opponent.getHasTurn()){
       this.opponent.switchTurn();
     }
+
+    if(!gameOn){
+      this.score = getAmountOfStonesInPits() + this.firstPit.findKalaha(this).getAmountStones();
+    }
   }
 
   public int getAmountOfStonesInPits(){
@@ -64,5 +69,9 @@ public class Player {
     }
 
     return amount;
+  }
+
+  public int getScore() {
+    return score;
   }
 }

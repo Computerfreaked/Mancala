@@ -131,4 +131,20 @@ public class PlayerTest {
                   "All pits of this player are empty at the end of his turn so he should have stopped the game."
     );
   }
+
+  @Test
+  public void player_GameEnds_ScoresCalculated(){
+    Pit pitToPlay;
+    Pit pit1 = new Pit();
+
+    clearPlayerSide(pit1);
+
+    pitToPlay = (Pit) pit1.getNextContainer(7);
+    pitToPlay.play();
+
+    //the game has ended
+    
+    assertEquals(pit1.getOwner().getScore(), pit1.getOwner().getAmountOfStonesInPits() + pit1.findKalaha(pit1.getOwner()).getAmountStones(), "Player score not correctly calculated after the game ended");
+    assertEquals(pit1.getOwner().getOpponent().getScore(), pit1.getOwner().getOpponent().getAmountOfStonesInPits() + pit1.findKalaha(pit1.getOwner().getOpponent()).getAmountStones(), "Opponent score not correctly calculated after the game ended");
+  }
 }
