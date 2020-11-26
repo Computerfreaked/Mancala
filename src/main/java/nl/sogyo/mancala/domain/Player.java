@@ -44,14 +44,15 @@ public class Player {
 
 
   public void switchTurn() {
+    if(getAmountOfStonesInPits() == 0){
+      Player.setGameOn(false);
+    }
+
     if(this.hasTurn){
       this.hasTurn = false;
     }
     else {
       this.hasTurn = true;
-      if(getAmountOfStonesInPits() == 0){
-        Player.setGameOn(false);
-      }
     }
 
     if(this.hasTurn == this.opponent.getHasTurn()){

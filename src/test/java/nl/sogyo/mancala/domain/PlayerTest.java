@@ -91,13 +91,73 @@ public class PlayerTest {
 
     pit1.play();
 
-    //after this move by opponent all players pits are empty
+    //after this move by opponent all players pits are empty and turn is handed over to player
     pitToPlay = (Pit) pit1.getNextContainer(7);
     pitToPlay.play();
 
 
     assertFalse(  Player.getGameOn(), 
                   "All pits of this player are empty at the beginning of his turn so he should have stopped the game."
+    );
+  }
+
+  @Test
+  public void player_SwitchTurnNoStonesInPitsAtEndOfTurn_SetPlayerGameOnFalse(){
+    Pit pit1 = new Pit();
+
+    Pit pitToPlay = (Pit) pit1.getNextContainer(2);
+    pitToPlay.play();
+
+    pitToPlay = (Pit) pit1.getNextContainer(12);
+    pitToPlay.play();
+
+    pitToPlay = (Pit) pit1.getNextContainer(1);
+    pitToPlay.play();
+
+    pitToPlay = (Pit) pit1.getNextContainer(8);
+    pitToPlay.play();
+
+    pitToPlay = (Pit) pit1.getNextContainer(2);
+    pitToPlay.play();
+    
+    pitToPlay = (Pit) pit1.getNextContainer(9);
+    pitToPlay.play();
+
+    pitToPlay = (Pit) pit1.getNextContainer(9);
+    pitToPlay.play();
+
+    pitToPlay = (Pit) pit1.getNextContainer(3);
+    pitToPlay.play();
+
+    pitToPlay = (Pit) pit1.getNextContainer(4);
+    pitToPlay.play();
+
+    pitToPlay = (Pit) pit1.getNextContainer(7);
+    pitToPlay.play();
+
+    pitToPlay = (Pit) pit1.getNextContainer(5);
+    pitToPlay.play();
+
+    pitToPlay = (Pit) pit1.getNextContainer(8);
+    pitToPlay.play();
+
+    pit1.play();
+
+    pitToPlay = (Pit) pit1.getNextContainer(9);
+    pitToPlay.play();
+
+    pitToPlay = (Pit) pit1.getNextContainer(4);
+    pitToPlay.play();
+
+    pitToPlay = (Pit) pit1.getNextContainer(8);
+    pitToPlay.play();
+
+    //after this move by player all players pits are empty and turn is handed over to opponent
+    pitToPlay = (Pit) pit1.getNextContainer(5);
+    pitToPlay.play();
+
+    assertFalse(  Player.getGameOn(), 
+                  "All pits of this player are empty at the end of his turn so he should have stopped the game."
     );
   }
 }
