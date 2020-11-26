@@ -40,4 +40,11 @@ public class PlayerTest {
     assertTrue(player1.getHasTurn(), "player 1 should not have the turn after fourth switch");
     assertFalse(player1.getOpponent().getHasTurn(), "opponent of player1 should have the turn after fourth switch");
   }
+
+  @Test
+  public void player_GetAmountStonesInPits_Returns24Stones(){
+    Pit pit1 = new Pit();
+
+    assertEquals(24, pit1.owner.getAmountOfStonesInPits(), "Calculated amount of stones incorrect");
+  }
 }

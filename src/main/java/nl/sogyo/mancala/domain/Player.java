@@ -27,6 +27,10 @@ public class Player {
     return this.firstPit;
   }
 
+  public void setFirstPit(Pit pit) {
+    this.firstPit = pit;
+  }
+
   public void switchTurn() {
     if(this.hasTurn){
       this.hasTurn = false;
@@ -38,5 +42,14 @@ public class Player {
     if(this.hasTurn == this.opponent.getHasTurn()){
       this.opponent.switchTurn();
     }
+  }
+
+  public int getAmountOfStonesInPits(){
+    int amount = this.firstPit.getAmountStones();
+    for(int i = 1; i <= 5; i++){
+      amount = amount + this.firstPit.getNextContainer(i).getAmountStones();
+    }
+
+    return amount;
   }
 }
