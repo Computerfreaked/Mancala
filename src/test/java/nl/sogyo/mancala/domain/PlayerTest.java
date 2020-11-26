@@ -24,6 +24,9 @@ public class PlayerTest {
 
   @Test
   public void player_SwitchTurn_TurnsAreSwitched(){
+    Pit pit1 = new Pit();
+    player1 = pit1.getOwner();
+    
     player1.switchTurn();
     assertFalse(player1.getHasTurn(), "player 1 should not have the turn after first switch");
     assertTrue(player1.getOpponent().getHasTurn(), "opponent of player1 should have the turn  after first switch");
