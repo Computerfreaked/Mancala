@@ -48,7 +48,6 @@ public class PlayerTest {
     assertEquals(24, pit1.owner.getAmountOfStonesInPits(), "Calculated amount of stones incorrect");
   }
 
-
   @Test
   public void player_SwitchTurnNoStonesInPitsAtBeginningOfTurn_SetPlayerGameOnFalse(){
     Pit pit1 = new Pit();

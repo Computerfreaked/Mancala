@@ -40,7 +40,6 @@ public class Player {
     Player.gameOn = gameOn;
   }
 
-
   public void switchTurn() {
     if(getAmountOfStonesInPits() == 0){
       Player.setGameOn(false);
