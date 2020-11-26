@@ -10,6 +10,7 @@ public class Kalaha extends Container{
     }
     else {
       this.owner = player.getOpponent();
+      this.nextContainer = player.getFirstPit();
     }
   }
 

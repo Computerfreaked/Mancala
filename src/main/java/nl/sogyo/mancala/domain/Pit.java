@@ -7,8 +7,6 @@ public class Pit extends Container{
     
     this.nextContainer = new Pit(2, this.owner);
     attachOppositePits(1);
-
-    this.getNextContainer(13).setNextContainer(this);
   }
 
   public Pit(int containerNumber, Player player){
