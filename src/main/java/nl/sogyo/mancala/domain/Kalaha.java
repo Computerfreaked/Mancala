@@ -15,7 +15,7 @@ public class Kalaha extends Container{
   }
 
 public void distributeStones(int amountStonesToPass) {
-    if(this.owner.getHasTurn() == true){
+    if(this.owner.getHasTurn()){
       this.amountStones = this.amountStones + 1;
       amountStonesToPass = amountStonesToPass - 1;
     }
