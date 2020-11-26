@@ -23,15 +23,34 @@ public class KalahaTest {
   public void kalaha_PlayPassingOpponentKalaha_StonesNotAcceptedByKalaha(){
     Pit pit1 = new Pit();
 
-    Pit pitToPlay = (Pit) pit1.getNextContainer(12);
+    Pit pitToPlay = (Pit) pit1.getNextContainer(4);
     pitToPlay.play();
 
-    assertEquals(0, pitToPlay.getAmountStones(), "Played pit not empty");
-    assertEquals(0, pitToPlay.getNextContainer(1).getAmountStones(), "Stones not properly distributed to Kalaha");
-    for(int i = 2; i <6; i++){
-      assertEquals(5, pitToPlay.getNextContainer(i).getAmountStones(), "Stones not properly distributed to pits");
-    }
-    assertEquals(4, pitToPlay.getNextContainer(6).getAmountStones(), "Too many stones distributed");
+    pitToPlay = (Pit) pit1.getNextContainer(7);
+    pitToPlay.play();
+
+    pitToPlay = (Pit) pit1.getNextContainer(3);
+    pitToPlay.play();
+
+    pitToPlay = (Pit) pit1.getNextContainer(7);
+    pitToPlay.play();
+
+    pitToPlay = (Pit) pit1.getNextContainer(2);
+    pitToPlay.play();
+
+    pitToPlay = (Pit) pit1.getNextContainer(12);
+    pitToPlay.play();
+
+    pitToPlay = (Pit) pit1.getNextContainer(3);
+    pitToPlay.play();
+
+    pitToPlay = (Pit) pit1.getNextContainer(11);
+    pitToPlay.play();
+
+    pitToPlay = (Pit) pit1.getNextContainer(5);
+    pitToPlay.play();
+
+    assertEquals(2, pit1.findKalaha(pit1.getOwner().getOpponent()).getAmountStones(), "Stones not properly distributed to Kalaha");
   }
 
   @Test
