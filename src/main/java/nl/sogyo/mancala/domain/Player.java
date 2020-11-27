@@ -1,7 +1,7 @@
 package nl.sogyo.mancala.domain;
 
 public class Player {
-  private Player opponent;
+  private final Player opponent;
   private boolean hasTurn;
   private Pit firstPit;
   private static boolean gameOn = true;
