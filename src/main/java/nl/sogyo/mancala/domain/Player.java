@@ -41,6 +41,10 @@ public class Player {
     Player.gameOn = gameOn;
   }
 
+  public int getScore() {
+    return score;
+  }
+
   public void switchTurn() {
     if(getAmountOfStonesInPits() == 0){
       Player.setGameOn(false);
@@ -69,9 +73,5 @@ public class Player {
     }
 
     return amount;
-  }
-
-  public int getScore() {
-    return score;
   }
 }
