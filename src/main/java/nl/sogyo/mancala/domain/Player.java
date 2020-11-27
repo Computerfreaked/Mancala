@@ -29,8 +29,8 @@ public class Player {
     return this.firstPit;
   }
 
-  public void setFirstPit(Pit pit) {
-    this.firstPit = pit;
+  public void setFirstPit(Container pit) {
+    this.firstPit = (Pit) pit;
   }
 
   public static boolean getGameOn() {

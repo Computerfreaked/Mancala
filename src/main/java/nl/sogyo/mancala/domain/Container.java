@@ -1,13 +1,38 @@
 package nl.sogyo.mancala.domain;
 
 public abstract class Container {
-  protected Container nextContainer;
+  protected final Container nextContainer;
   protected int amountStones;
   protected final Player owner;
   protected Container opposite;
 
-  protected Container(Player owner){
+  protected Container(Player owner, int containerNumber){
+    if (containerNumber == 7 + 1){
+      owner = owner.getOpponent();
+    }
     this.owner = owner;
+
+    if((containerNumber + 1) % 14 == 0){
+      this.nextContainer = new Kalaha(containerNumber + 1, owner);
+    }
+    else if((containerNumber + 1) % 7 == 0){
+      this.nextContainer = new Kalaha(containerNumber + 1, owner);
+    }
+    else if(containerNumber + 1 < 7){
+      if(containerNumber == 1){
+        this.owner.setFirstPit(this);
+      }
+      this.nextContainer = new Pit(containerNumber + 1, owner);
+    }
+    else if(containerNumber + 1 == 15){
+      this.nextContainer = this.owner.getOpponent().getFirstPit();
+    }
+    else{
+      if(containerNumber == 8){
+        this.owner.setFirstPit(this);
+      }
+      this.nextContainer = new Pit(containerNumber + 1, owner);
+    }
   }
 
   public Container getNextContainer(int howOften){
