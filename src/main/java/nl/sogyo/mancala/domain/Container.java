@@ -13,10 +13,6 @@ public abstract class Container {
     return this.nextContainer;
   }
 
-  public void setNextContainer(Container nextPit){
-    this.nextContainer = nextPit;
-  }
-
   public int getAmountStones() {
     return amountStones;
   }

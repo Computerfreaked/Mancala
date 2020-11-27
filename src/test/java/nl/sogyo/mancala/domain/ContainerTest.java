@@ -5,6 +5,10 @@ import org.junit.jupiter.api.Test;
 
 public class ContainerTest {
   private class ContainerStub extends Container{
+    public void setNextContainer(Container nextPit){
+      this.nextContainer = nextPit;
+    }
+    
     @Override
     public void distributeStones(int amountStones) {
       // not used
