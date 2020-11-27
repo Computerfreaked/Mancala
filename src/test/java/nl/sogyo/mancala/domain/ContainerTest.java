@@ -5,6 +5,10 @@ import org.junit.jupiter.api.Test;
 
 public class ContainerTest {
   private class ContainerStub extends Container{
+    protected ContainerStub(){
+      super(new Player());
+    }
+
     public void setNextContainer(Container nextPit){
       this.nextContainer = nextPit;
     }

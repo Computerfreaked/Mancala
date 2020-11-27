@@ -3,8 +3,12 @@ package nl.sogyo.mancala.domain;
 public abstract class Container {
   protected Container nextContainer;
   protected int amountStones;
-  protected Player owner;
+  protected final Player owner;
   protected Container opposite;
+
+  protected Container(Player owner){
+    this.owner = owner;
+  }
 
   public Container getNextContainer(int howOften){
     if(howOften > 1){

@@ -1,8 +1,8 @@
 package nl.sogyo.mancala.domain;
 public class Pit extends Container{
   public Pit(){
+    super(new Player());
     this.amountStones = 4;
-    this.owner = new Player();
     this.owner.setFirstPit(this);
     
     this.nextContainer = new Pit(2, this.owner);
@@ -10,22 +10,19 @@ public class Pit extends Container{
   }
 
   public Pit(int containerNumber, Player player){
+    super(player);
     this.amountStones = 4;
 
     if((containerNumber + 1) % 14 == 0){
-      this.owner = player.getOpponent();
       this.nextContainer = new Kalaha(containerNumber + 1, player);
     }
     else if((containerNumber + 1) % 7 == 0){
-      this.owner = player;
       this.nextContainer = new Kalaha(containerNumber + 1, player);
     }
     else if(containerNumber + 1 < 7){
-      this.owner = player;
       this.nextContainer = new Pit(containerNumber + 1, player);
     }
     else{
-      this.owner = player.getOpponent();
       if(containerNumber == 8){
         this.owner.setFirstPit(this);
       }

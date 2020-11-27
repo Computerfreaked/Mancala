@@ -2,15 +2,15 @@ package nl.sogyo.mancala.domain;
 
 public class Kalaha extends Container{
   public Kalaha(int containerNumber, Player player){
+    super(player);
+
     this.amountStones = 0;
 
     if(containerNumber == 7){
-      this.owner = player;
-      this.nextContainer = new Pit(containerNumber + 1, player);
+      this.nextContainer = new Pit(containerNumber + 1, player.getOpponent());
     }
     else {
-      this.owner = player.getOpponent();
-      this.nextContainer = player.getFirstPit();
+      this.nextContainer = player.getOpponent().getFirstPit();
     }
   }
 
