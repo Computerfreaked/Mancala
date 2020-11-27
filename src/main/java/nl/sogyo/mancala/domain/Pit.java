@@ -24,16 +24,16 @@ public class Pit extends Container{
       this.owner = player;
       this.nextContainer = new Pit(containerNumber + 1, player);
     }
-    else if(containerNumber + 1 < 14){
+    else{
       this.owner = player.getOpponent();
       if(containerNumber == 8){
         this.owner.setFirstPit(this);
       }
       this.nextContainer = new Pit(containerNumber + 1, player);
     }
-    else{
-      throw new UnsupportedOperationException();
-    }
+    // else{
+    //   throw new UnsupportedOperationException();
+    // }
   }
 
   public void play() {
