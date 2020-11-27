@@ -33,14 +33,16 @@ public class Pit extends Container{
     }
   }
 
-  public void play() {
+  public boolean play() {
     if(this.amountStones == 0 || !this.owner.getHasTurn()){
-      return;
+      return false;
     }
 
     this.nextContainer.distributeStones(this.amountStones);
     this.amountStones = 0;
     this.owner.switchTurn();
+
+    return true;
   }
 
   public void sendStonesToKalaha(int amountFromOtherPit) {
