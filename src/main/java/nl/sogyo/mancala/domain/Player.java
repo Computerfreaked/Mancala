@@ -1,21 +1,19 @@
 package nl.sogyo.mancala.domain;
 
 public class Player {
-  private Player opponent;
+  private final Player opponent;
   private boolean hasTurn;
   private Pit firstPit;
+  private static boolean gameOn = true;
+  private int score = 0;
 
   public Player(){
     this.hasTurn = true;
-    this.firstPit = new Pit(6, this);
     this.opponent = new Player(this);
-    linkPitSeq(this.opponent.linkPitSeq(this.firstPit));
-    this.firstPit.setAllOpposites();
   }
 
   public Player(Player opponent){
     this.hasTurn = false;
-    this.firstPit = new Pit(6, this);
     this.opponent = opponent;
   }
 
@@ -31,12 +29,27 @@ public class Player {
     return this.firstPit;
   }
 
-  public Pit linkPitSeq(Pit otherPlayerFirstPit){
-    this.firstPit.getNextContainer(6).setNextContainer(otherPlayerFirstPit);
-    return this.firstPit;
+  public void setFirstPit(Pit pit) {
+    this.firstPit = pit;
+  }
+
+  public static boolean getGameOn() {
+    return Player.gameOn;
+  }
+
+  public static void setGameOn(boolean gameOn) {
+    Player.gameOn = gameOn;
+  }
+
+  public int getScore() {
+    return score;
   }
 
   public void switchTurn() {
+    if(getAmountOfStonesInPits() == 0){
+      Player.setGameOn(false);
+    }
+
     if(this.hasTurn){
       this.hasTurn = false;
     }
@@ -47,5 +60,18 @@ public class Player {
     if(this.hasTurn == this.opponent.getHasTurn()){
       this.opponent.switchTurn();
     }
+
+    if(!gameOn){
+      this.score = getAmountOfStonesInPits() + this.firstPit.findKalaha(this).getAmountStones();
+    }
+  }
+
+  public int getAmountOfStonesInPits(){
+    int amount = this.firstPit.getAmountStones();
+    for(int i = 1; i <= 5; i++){
+      amount = amount + this.firstPit.getNextContainer(i).getAmountStones();
+    }
+
+    return amount;
   }
 }

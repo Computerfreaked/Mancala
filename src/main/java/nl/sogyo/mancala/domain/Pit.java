@@ -1,44 +1,51 @@
 package nl.sogyo.mancala.domain;
 public class Pit extends Container{
   public Pit(){
+    super(new Player());
     this.amountStones = 4;
+    this.owner.setFirstPit(this);
+    
+    this.nextContainer = new Pit(2, this.owner);
+    attachOppositeContainer(1);
   }
 
-  public Pit(int amount){
-    this();
+  public Pit(int containerNumber, Player player){
+    super(player);
+    this.amountStones = 4;
 
-    if(amount > 1){
-      this.nextContainer = new Pit(amount - 1);
+    if((containerNumber + 1) % 14 == 0){
+      this.nextContainer = new Kalaha(containerNumber + 1, player);
+    }
+    else if((containerNumber + 1) % 7 == 0){
+      this.nextContainer = new Kalaha(containerNumber + 1, player);
+    }
+    else if(containerNumber + 1 < 7){
+      this.nextContainer = new Pit(containerNumber + 1, player);
     }
     else{
-      this.nextContainer = new Kalaha();
+      if(containerNumber == 8){
+        this.owner.setFirstPit(this);
+      }
+      this.nextContainer = new Pit(containerNumber + 1, player);
     }
   }
 
-  public Pit(int amount, Player player) {
-    this();
-    this.owner = player;
+  public boolean play() {
+    int amountStonesToPass = this.amountStones;
 
-    if(amount > 1){
-      this.nextContainer = new Pit(amount - 1, player);
-    }
-    else{
-      this.nextContainer = new Kalaha(player);
-    }
-  }
-
-  public void play() {
-    if(this.amountStones == 0){
-      return;
+    if(this.amountStones == 0 || !this.owner.getHasTurn()){
+      return false;
     }
 
-    this.nextContainer.distributeStones(this.amountStones);
     this.amountStones = 0;
+    this.nextContainer.distributeStones(amountStonesToPass);
     this.owner.switchTurn();
+
+    return true;
   }
 
   public void sendStonesToKalaha(int amountFromOtherPit) {
-    Kalaha receivingKalaha = (Kalaha) this.owner.getOpponent().getFirstPit().getNextContainer(6);
+    Kalaha receivingKalaha = this.nextContainer.findKalaha(this.owner.getOpponent());
     receivingKalaha.receiveStones(this.amountStones + amountFromOtherPit);
     this.amountStones = 0;
   }

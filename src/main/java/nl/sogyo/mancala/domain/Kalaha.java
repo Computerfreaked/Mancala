@@ -1,17 +1,21 @@
 package nl.sogyo.mancala.domain;
 
 public class Kalaha extends Container{
-  public Kalaha(){
-    //default but just to be sure
+  public Kalaha(int containerNumber, Player player){
+    super(player);
+
     this.amountStones = 0;
+
+    if(containerNumber == 7){
+      this.nextContainer = new Pit(containerNumber + 1, player.getOpponent());
+    }
+    else {
+      this.nextContainer = player.getOpponent().getFirstPit();
+    }
   }
 
-  public Kalaha(Player player) {
-    this.owner = player;
-  }
-
-  public void distributeStones(int amountStonesToPass) {
-    if(this.owner.getHasTurn() == true){
+public void distributeStones(int amountStonesToPass) {
+    if(this.owner.getHasTurn()){
       this.amountStones = this.amountStones + 1;
       amountStonesToPass = amountStonesToPass - 1;
     }

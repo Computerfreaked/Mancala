@@ -3,18 +3,18 @@ package nl.sogyo.mancala.domain;
 public abstract class Container {
   protected Container nextContainer;
   protected int amountStones;
-  protected Player owner;
+  protected final Player owner;
   protected Container opposite;
+
+  protected Container(Player owner){
+    this.owner = owner;
+  }
 
   public Container getNextContainer(int howOften){
     if(howOften > 1){
       return nextContainer.getNextContainer(howOften - 1);
     }
     return this.nextContainer;
-  }
-
-  public void setNextContainer(Container nextPit){
-    this.nextContainer = nextPit;
   }
 
   public int getAmountStones() {
@@ -25,26 +25,31 @@ public abstract class Container {
     return this.owner;
   }
 
-  public void setOppositeContainer(Container opposite){
-    this.opposite = opposite;
-  }
-
   public Container getOppositeContainer(){
     return this.opposite;
   }
 
-  public int setAllOpposites(){
-    int oppositeHowMuchAhead;
-
-    if(this.nextContainer instanceof Kalaha){
-      oppositeHowMuchAhead = 2;
+  public Kalaha findKalaha(Player owner){
+    if(this instanceof Kalaha && this.owner == owner){
+      return (Kalaha) this;
     }
     else {
-      oppositeHowMuchAhead = this.nextContainer.setAllOpposites();
+      return this.getNextContainer(1).findKalaha(owner);
     }
-    this.opposite = this.getNextContainer(oppositeHowMuchAhead);
-    this.opposite.setOppositeContainer(this);
-    return oppositeHowMuchAhead + 2;
+  }
+
+  public void attachOppositeContainer(int containerNumber){
+    if (containerNumber < 7){
+      this.opposite = this.getNextContainer((7 - containerNumber) * 2);
+    }
+    else if(containerNumber < 14 && containerNumber > 7){
+      this.opposite = this.getNextContainer((14 - containerNumber) * 2);
+    }
+    else if (containerNumber == 14){
+      return;
+    }
+
+    this.nextContainer.attachOppositeContainer(containerNumber +1);
   }
 
   public abstract void distributeStones(int amountStones);

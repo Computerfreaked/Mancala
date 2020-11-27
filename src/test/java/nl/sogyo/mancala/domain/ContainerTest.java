@@ -5,6 +5,14 @@ import org.junit.jupiter.api.Test;
 
 public class ContainerTest {
   private class ContainerStub extends Container{
+    protected ContainerStub(){
+      super(new Player());
+    }
+
+    public void setNextContainer(Container nextPit){
+      this.nextContainer = nextPit;
+    }
+    
     @Override
     public void distributeStones(int amountStones) {
       // not used
@@ -31,15 +39,25 @@ public class ContainerTest {
   }
 
   @Test
-  public void container_NewPlayer_AllPitsHaveAnOpposite(){
-    Player player1 = new Player();
+  public void container_NewPit_AllPitsHaveAnOpposite(){
+    Pit pit1 = new Pit();
 
-    assertSame(player1.getFirstPit(), player1.getFirstPit().getOppositeContainer().getOppositeContainer(), "Improper opposite on pit");
+    assertSame(pit1, pit1.getOppositeContainer().getOppositeContainer(), "Improper opposite on pit");
     for(int i = 1; i< 6; i++){
-      assertSame( player1.getFirstPit().getNextContainer(i),
-                  player1.getFirstPit().getNextContainer(i).getOppositeContainer().getOppositeContainer(),
+      assertSame( pit1.getNextContainer(i),
+                  pit1.getNextContainer(i).getOppositeContainer().getOppositeContainer(),
                   "Improper opposite on pit"
       );
     }
+  }
+
+  @Test
+  public void container_FindKalahaWithOpponent_KalahaFound(){
+    Pit pit1 = new Pit();
+    
+    assertSame( pit1.getNextContainer(13),
+                pit1.findKalaha(pit1.getOwner().getOpponent()),
+                "Incorrect or no Kalaha found"
+    );
   }
 }
