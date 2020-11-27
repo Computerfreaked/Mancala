@@ -151,14 +151,4 @@ public class PitTest {
     assertSame(pit1, pit1.getOwner().getFirstPit(), "Player was not correctly informed about his first pit");
     assertSame(pit1.getNextContainer(7), pit1.getNextContainer(7).getOwner().getFirstPit(), "Player opponent was not correctly informed about his first pit");
   }
-
-  // @Test
-  // public void pit_PitWithContainerNumberHigherThan14_ExceptionThrown(){
-  //   Player player1 = new Player();
-    
-  //   assertThrows( UnsupportedOperationException.class,
-  //                 () -> { new Pit(15, player1); },
-  //                 "Trying to make more than 14 containers, this should be impossible"
-  //   );
-  // }
 }
