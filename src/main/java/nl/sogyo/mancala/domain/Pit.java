@@ -34,12 +34,14 @@ public class Pit extends Container{
   }
 
   public boolean play() {
+    int amountStonesToPass = this.amountStones;
+
     if(this.amountStones == 0 || !this.owner.getHasTurn()){
       return false;
     }
 
-    this.nextContainer.distributeStones(this.amountStones);
     this.amountStones = 0;
+    this.nextContainer.distributeStones(amountStonesToPass);
     this.owner.switchTurn();
 
     return true;

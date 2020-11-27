@@ -151,4 +151,17 @@ public class PitTest {
     assertSame(pit1, pit1.getOwner().getFirstPit(), "Player was not correctly informed about his first pit");
     assertSame(pit1.getNextContainer(7), pit1.getNextContainer(7).getOwner().getFirstPit(), "Player opponent was not correctly informed about his first pit");
   }
+
+  @Test
+  public void pit_PlayGoesAroundTheBoardAndEndsAtStartingPit_StealingPerformedPitAndOppositeEmpty(){
+    for (int i = 0; i < 9; i++){
+      pit1.getNextContainer(5).distributeStones(1);
+    }
+
+    Pit pitToPlay = (Pit) pit1.getNextContainer(5);
+    pitToPlay.play();
+    
+    assertEquals(0, pit1.getNextContainer(5).getAmountStones(), "The stone delivered in this pit was not taken to Kalaha");
+    assertEquals(0, pit1.getNextContainer(5).getOppositeContainer().getAmountStones(), "The stones in the opposite pit were not stolen.");
+  }
 }
