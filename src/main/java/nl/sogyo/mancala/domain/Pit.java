@@ -31,9 +31,6 @@ public class Pit extends Container{
       }
       this.nextContainer = new Pit(containerNumber + 1, player);
     }
-    // else{
-    //   throw new UnsupportedOperationException();
-    // }
   }
 
   public void play() {
