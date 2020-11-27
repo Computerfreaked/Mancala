@@ -5,7 +5,7 @@ public class Player {
   private boolean hasTurn;
   private Pit firstPit;
   private static boolean gameOn = true;
-  int score = 0;
+  private int score = 0;
 
   public Player(){
     this.hasTurn = true;
