@@ -23,23 +23,24 @@ public class PlayerTest {
   }
 
   @Test
-  public void player_SwitchTurn_TurnsAreSwitched(){
+  public void player_SwitchTurnOnceByPlayer_TurnsAreSwitched(){
     Pit pit1 = new Pit();
     player1 = pit1.getOwner();
     
     player1.switchTurn();
+
     assertFalse(player1.getHasTurn(), "player 1 should not have the turn after first switch");
     assertTrue(player1.getOpponent().getHasTurn(), "opponent of player1 should have the turn  after first switch");
+  }
+
+  @Test
+  public void player_SwitchTurnTwiceByPlayerAndOpponent_TurnsAreSwitched(){
+    Pit pit1 = new Pit();
+    player1 = pit1.getOwner();
 
     player1.switchTurn();
-    assertTrue(player1.getHasTurn(), "player 1 should not have the turn after second switch");
-    assertFalse(player1.getOpponent().getHasTurn(), "opponent of player1 should have the turn after second switch");
-
     player1.getOpponent().switchTurn();
-    assertFalse(player1.getHasTurn(), "opponent should not have the turn after third switch");
-    assertTrue(player1.getOpponent().getHasTurn(), "opponent of player1 should have the turn  after third switch");
 
-    player1.getOpponent().switchTurn();
     assertTrue(player1.getHasTurn(), "player 1 should not have the turn after fourth switch");
     assertFalse(player1.getOpponent().getHasTurn(), "opponent of player1 should have the turn after fourth switch");
   }
