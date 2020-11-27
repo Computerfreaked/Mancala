@@ -6,7 +6,7 @@ public class Pit extends Container{
     this.owner.setFirstPit(this);
     
     this.nextContainer = new Pit(2, this.owner);
-    attachOppositePits(1);
+    attachOppositeContainer(1);
   }
 
   public Pit(int containerNumber, Player player){
@@ -19,12 +19,10 @@ public class Pit extends Container{
     else if((containerNumber + 1) % 7 == 0){
       this.owner = player;
       this.nextContainer = new Kalaha(containerNumber + 1, player);
-      attachOppositePits(containerNumber);
     }
     else if(containerNumber + 1 < 7){
       this.owner = player;
       this.nextContainer = new Pit(containerNumber + 1, player);
-      attachOppositePits(containerNumber);
     }
     else if(containerNumber + 1 < 14){
       this.owner = player.getOpponent();
@@ -36,11 +34,6 @@ public class Pit extends Container{
     else{
       throw new UnsupportedOperationException();
     }
-  }
-
-  private void attachOppositePits(int amount){
-    this.opposite = this.getNextContainer((7 - amount) * 2);
-    this.opposite.setOppositeContainer(this);
   }
 
   public void play() {

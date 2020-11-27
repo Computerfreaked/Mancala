@@ -25,10 +25,6 @@ public abstract class Container {
     return this.owner;
   }
 
-  public void setOppositeContainer(Container opposite){
-    this.opposite = opposite;
-  }
-
   public Container getOppositeContainer(){
     return this.opposite;
   }
@@ -40,6 +36,20 @@ public abstract class Container {
     else {
       return this.getNextContainer(1).findKalaha(owner);
     }
+  }
+
+  public void attachOppositeContainer(int containerNumber){
+    if (containerNumber < 7){
+      this.opposite = this.getNextContainer((7 - containerNumber) * 2);
+    }
+    else if(containerNumber < 14 && containerNumber > 7){
+      this.opposite = this.getNextContainer((14 - containerNumber) * 2);
+    }
+    else if (containerNumber == 14){
+      return;
+    }
+
+    this.nextContainer.attachOppositeContainer(containerNumber +1);
   }
 
   public abstract void distributeStones(int amountStones);
