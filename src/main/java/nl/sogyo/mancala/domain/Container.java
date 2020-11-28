@@ -7,10 +7,13 @@ public abstract class Container {
   protected Container opposite;
 
   protected Container(Player owner, int containerNumber){
-    if (containerNumber == 7 + 1){
+    if (containerNumber == 8){
       owner = owner.getOpponent();
+      this.owner = owner;
+      this.owner.setFirstPit(this);
+    } else {
+      this.owner = owner;
     }
-    this.owner = owner;
 
     if((containerNumber + 1) % 14 == 0){
       this.nextContainer = new Kalaha(containerNumber + 1, owner);
@@ -28,9 +31,6 @@ public abstract class Container {
       this.nextContainer = this.owner.getOpponent().getFirstPit();
     }
     else{
-      if(containerNumber == 8){
-        this.owner.setFirstPit(this);
-      }
       this.nextContainer = new Pit(containerNumber + 1, owner);
     }
   }

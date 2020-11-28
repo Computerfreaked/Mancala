@@ -11,10 +11,6 @@ public class Pit extends Container{
   public Pit(int containerNumber, Player player){
     super(player, containerNumber);
     this.amountStones = 4;
-
-    if(containerNumber == 8){
-      this.owner.setFirstPit(this);
-    }
   }
 
   public boolean play() {
