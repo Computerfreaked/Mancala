@@ -3,7 +3,6 @@ public class Pit extends Container{
   public Pit(){
     super(new Player(), 1);
     this.amountStones = 4;
-    this.owner.setFirstPit(this);
     
     attachOppositeContainer(1);
   }

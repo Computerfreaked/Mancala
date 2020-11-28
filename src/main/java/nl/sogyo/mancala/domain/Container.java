@@ -7,7 +7,11 @@ public abstract class Container {
   protected Container opposite;
 
   protected Container(Player owner, int containerNumber){
-    if (containerNumber == 8){
+    if (containerNumber == 1){
+      this.owner = owner;
+      this.owner.setFirstPit(this);
+    }
+    else if (containerNumber == 8){
       owner = owner.getOpponent();
       this.owner = owner;
       this.owner.setFirstPit(this);
