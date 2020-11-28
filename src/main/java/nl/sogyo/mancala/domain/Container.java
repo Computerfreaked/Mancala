@@ -26,9 +26,6 @@ public abstract class Container {
       this.nextContainer = new Kalaha(containerNumber + 1, owner);
     }
     else if(containerNumber + 1 < 7){
-      if(containerNumber == 1){
-        this.owner.setFirstPit(this);
-      }
       this.nextContainer = new Pit(containerNumber + 1, owner);
     }
     else if(containerNumber + 1 == 15){
