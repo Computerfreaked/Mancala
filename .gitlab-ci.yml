@@ -1,7 +1,11 @@
 default:
   image: maven:3.6.3-openjdk-11
 
-build-job:
-  stage: build
-  script:
-    - echo "Hello, $GITLAB_USER_LOGIN!"
+stages:
+#  - build
+  - test
+#  - deploy
+
+runUnitTests:
+  stage: test
+  script: echo "should run some test here"
