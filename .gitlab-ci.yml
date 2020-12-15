@@ -1,5 +1,5 @@
 default:
-  image: maven:3.6.3-openjdk-11-jacoco-0.8.6
+  image: meuk:latest
   
 
 stages:
