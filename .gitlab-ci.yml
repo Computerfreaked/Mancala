@@ -2,10 +2,14 @@ default:
   image: maven:3.6.3-openjdk-11
 
 stages:
-#  - build
+  - build
   - test
 #  - deploy
 
+validateAndCompile:
+  stage: build
+  script: mvn clean compile
+
 runUnitTests:
   stage: test
-  script: echo "should run some test here"
+  script: mvn test
