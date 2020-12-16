@@ -18,10 +18,15 @@ validateAndCompile:
   script: mvn $MAVEN_OPTS clean compile > mvncompileoutput.txt
 
   artifacts:
-    expire_in: 10 mins
+    expire_in: 1 hour
     paths:
       - target/
 
 runUnitTests:
   stage: test
   script: mvn $MAVEN_OPTS test
+
+  reports:
+      junit:
+        - target/surefire-reports/TEST-*.xml
+
