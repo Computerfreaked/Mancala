@@ -13,22 +13,22 @@ cache:
 validateAndCompile:
   stage: build
   before_script:
-    - rm -rf ~/.m2/repository || TRUE
-    - mv cache ~/.m2/repository || TRUE
+    - rm -rf ~/.m2/repository || true
+    - mv cache ~/.m2/repository || true
 
   script: mvn clean compile
 
   after_script:
-    - rm -rf cache || TRUE
-    - cp -r ~/.m2/repository cache || TRUE
+    - rm -rf cache || true
+    - cp -r ~/.m2/repository cache || true
 
 runUnitTests:
   stage: test
   before_script:
-    - rm -rf ~/.m2/repository || TRUE
-    - mv cache ~/.m2/repository || TRUE
+    - rm -rf ~/.m2/repository || true
+    - mv cache ~/.m2/repository || true
 
   script: mvn test
   after_script:
-    - rm -rf cache || TRUE
-    - cp -r ~/.m2/repository cache || TRUE
+    - rm -rf cache || true
+    - cp -r ~/.m2/repository cache || true
