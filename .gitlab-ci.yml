@@ -8,13 +8,27 @@ stages:
 
 cache:
   paths:
-    - ~/.m2/repository
-
+    - cache
 
 validateAndCompile:
   stage: build
+  before-script:
+    - rm -rf ~/.m2/repository
+    - mv cache ~/.m2/repository
+
   script: mvn clean compile
+
+  after-script:
+    - rm -rf cache
+    - cp ~/.m2/repository cache
 
 runUnitTests:
   stage: test
+  before-script:
+    - rm -rf ~/.m2/repository
+    - mv cache ~/.m2/repository
+
   script: mvn test
+  after-script:
+    - rm -rf cache
+    - cp ~/.m2/repository cache
