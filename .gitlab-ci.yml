@@ -1,11 +1,15 @@
 default:
   image: maven:jdkjacoco
   
-
 stages:
   - build
   - test
 #  - deploy
+
+cache:
+  paths:
+    - .m2/repository
+
 
 validateAndCompile:
   stage: build
