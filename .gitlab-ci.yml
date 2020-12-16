@@ -1,6 +1,8 @@
 default:
   image: maven:3.6.3-openjdk-11
-  
+
+variables:
+  MAVEN_OPTS: "-Dhttps.protocols=TLSv1.2 -Dmaven.repo.local=$CI_PROJECT_DIR/.m2/repository"
 stages:
   - build
   - test
@@ -8,27 +10,12 @@ stages:
 
 cache:
   paths:
-    - cache
+    - .m2/repository
 
 validateAndCompile:
   stage: build
-  before_script:
-    - rm -rf ~/.m2/repository || true
-    - mv cache ~/.m2/repository || true
-
   script: mvn clean compile
-
-  after_script:
-    - rm -rf cache || true
-    - cp -r ~/.m2/repository cache || true
 
 runUnitTests:
   stage: test
-  before_script:
-    - rm -rf ~/.m2/repository || true
-    - mv cache ~/.m2/repository || true
-
   script: mvn test
-  after_script:
-    - rm -rf cache || true
-    - cp -r ~/.m2/repository cache || true
