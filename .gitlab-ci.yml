@@ -26,7 +26,8 @@ runUnitTests:
   stage: test
   script: mvn $MAVEN_OPTS test
 
-  reports:
-      junit:
-        - target/surefire-reports/TEST-*.xml
+  artifacts:
+    reports:
+        junit:
+          - target/surefire-reports/TEST-*.xml
 
