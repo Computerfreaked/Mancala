@@ -14,7 +14,13 @@ cache:
 
 validateAndCompile:
   stage: build
-  script: mvn $MAVEN_OPTS clean compile
+
+  script: mvn $MAVEN_OPTS clean compile > mvncompileoutput.txt
+
+  artifacts:
+    expire_in: 10 mins
+    paths:
+      - mvncompileoutput.txt
 
 runUnitTests:
   stage: test
