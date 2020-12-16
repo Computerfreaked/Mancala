@@ -20,7 +20,7 @@ validateAndCompile:
 
   after_script:
     - rm -rf cache
-    - cp ~/.m2/repository cache
+    - cp -r ~/.m2/repository cache
 
 runUnitTests:
   stage: test
@@ -31,4 +31,4 @@ runUnitTests:
   script: mvn test
   after_script:
     - rm -rf cache
-    - cp ~/.m2/repository cache
+    - cp -r ~/.m2/repository cache
