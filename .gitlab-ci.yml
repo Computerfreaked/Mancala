@@ -27,7 +27,7 @@ runUnitTests:
   script: mvn $MAVEN_OPTS test
 
   artifacts:
-  expire_in: 2 min
+    expire_in: 2 min
     reports:
         junit:
           - target/surefire-reports/TEST-*.xml
