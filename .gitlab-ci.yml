@@ -8,7 +8,7 @@ stages:
 
 cache:
   paths:
-    - .m2/repository
+    - /root/.m2/repository
 
 
 validateAndCompile:
