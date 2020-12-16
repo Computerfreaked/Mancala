@@ -12,23 +12,23 @@ cache:
 
 validateAndCompile:
   stage: build
-  before-script:
+  before_script:
     - rm -rf ~/.m2/repository
     - mv cache ~/.m2/repository
 
   script: mvn clean compile
 
-  after-script:
+  after_script:
     - rm -rf cache
     - cp ~/.m2/repository cache
 
 runUnitTests:
   stage: test
-  before-script:
+  before_script:
     - rm -rf ~/.m2/repository
     - mv cache ~/.m2/repository
 
   script: mvn test
-  after-script:
+  after_script:
     - rm -rf cache
     - cp ~/.m2/repository cache
