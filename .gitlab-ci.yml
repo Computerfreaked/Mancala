@@ -14,8 +14,8 @@ cache:
 
 validateAndCompile:
   stage: build
-  script: mvn clean compile
+  script: mvn $MAVEN_OPTS clean compile
 
 runUnitTests:
   stage: test
-  script: mvn test
+  script: mvn $MAVEN_OPTS test
