@@ -20,7 +20,7 @@ validateAndCompile:
   artifacts:
     expire_in: 10 mins
     paths:
-      - mvncompileoutput.txt
+      - target/
 
 runUnitTests:
   stage: test
