@@ -41,7 +41,7 @@ checkCompileWarnings:
   stage: test
   script:
     - cat compileStepOutput.txt | grep -i warning
-    - if [ $(cat compileStepOutput.txt | grep -i warning | wc -l) -gt 1 ]; then printf '%s\n' "Test case x failed" >&2; false; fi
+    - if [ $(cat compileStepOutput.txt | grep -i warning | wc -l) -gt 1 ]; then printf '%s\n' "Too many warnings" >&2; fi
 
 jacocoInstructionsCoverage:
   stage: coverageTest
