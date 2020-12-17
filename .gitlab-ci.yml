@@ -37,6 +37,12 @@ runUnitTests:
         junit:
           - target/surefire-reports/TEST-*.xml
 
+checkCompileWarnings:
+  stage: test
+  script:
+    - cat compileOutput.txt | grep -i warning
+    - if [ $(cat compileOutput.txt | grep -i warning | wc -l) -gt 1 ]; then false; fi
+
 jacocoInstructionsCoverage:
   stage: coverageTest
   needs: ["runUnitTests"]
