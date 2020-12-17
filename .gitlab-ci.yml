@@ -3,7 +3,7 @@ default:
 
 variables:
   MAVEN_OPTS: "-Dhttps.protocols=TLSv1.2 -Dmaven.repo.local=$CI_PROJECT_DIR/.m2/repository"
-  MAX_NO_COMPILER_WARN: 2
+  MAX_NO_COMPILER_WARN: 0
 
 stages:
   - build
@@ -52,7 +52,7 @@ checkCompileWarnings:
 
 jacocoInstructionsCoverage:
   stage: coverageTest
-  needs: ["runUnitTests"]
+  #needs: ["runUnitTests"]
   script: "awk -F \",\" '{ instructions += $4 + $5; covered += $5 } END { print covered, \"/\", instructions, \"instructions covered\"; print \"Instructions covered: \"100*covered/instructions, \"%\" }' target/site/jacoco/jacoco.csv"
   coverage: "/Instructions covered:\\s\\d+\\.*\\d*\\s%/"
 
