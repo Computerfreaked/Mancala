@@ -1,7 +1,43 @@
 default:
   image: maven:3.6.3-openjdk-11
 
-build-job:
+variables:
+  MAVEN_OPTS: "-Dhttps.protocols=TLSv1.2 -Dmaven.repo.local=$CI_PROJECT_DIR/.m2/repository"
+stages:
+  - build
+  - test
+  - coveragetest
+#  - deploy
+
+cache:
+  paths:
+    - .m2/repository
+
+validateAndCompile:
   stage: build
-  script:
-    - echo "Hello, $GITLAB_USER_LOGIN!"
+
+  script: mvn $MAVEN_OPTS clean compile > mvncompileoutput.txt
+
+  artifacts:
+    expire_in: 1 hour
+    paths:
+      - target/
+
+runUnitTests:
+  stage: test
+  script: mvn $MAVEN_OPTS test
+
+  artifacts:
+    expire_in: 1 hour
+    paths:
+      - target/
+    reports:
+        junit:
+          - target/surefire-reports/TEST-*.xml
+
+jacocoinstructionscoverage:
+  stage: coveragetest
+  needs: ["runUnitTests"]
+  script: "awk -F \",\" '{ instructions += $4 + $5; covered += $5 } END { print covered, \"/\", instructions, \"instructions covered\"; print \"Instructions covered: \"100*covered/instructions, \"%\" }' target/site/jacoco/jacoco.csv"
+  coverage: "/Instructions covered:\\s\\d+\\.*\\d*\\s%/"
+
