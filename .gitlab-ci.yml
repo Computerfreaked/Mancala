@@ -42,8 +42,11 @@ runUnitTests:
 checkCompileWarnings:
   stage: test
   script:
-    - cat compileStepOutput.txt | grep -i warning
+    - cat compileStepOutput.txt | grep -i warning| tee compilerWarnings.txt
     - if [ $(cat compileStepOutput.txt | grep -i warning | wc -l) -gt $MAX_NO_COMPILER_WARN ]; then echo -e "\033[0;31m[ERROR]\033[0m Too many compiler warnings!"; false; fi
+
+  artifacts:
+    - compilerWarnings.txt
 
 jacocoInstructionsCoverage:
   stage: coverageTest
