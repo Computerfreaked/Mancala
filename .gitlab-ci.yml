@@ -3,6 +3,8 @@ default:
 
 variables:
   MAVEN_OPTS: "-Dhttps.protocols=TLSv1.2 -Dmaven.repo.local=$CI_PROJECT_DIR/.m2/repository"
+  MAX_NO_COMPILER_WARN: 1
+
 stages:
   - build
   - test
@@ -41,7 +43,7 @@ checkCompileWarnings:
   stage: test
   script:
     - cat compileStepOutput.txt | grep -i warning
-    - if [ $(cat compileStepOutput.txt | grep -i warning | wc -l) -gt 1 ]; then echo -e "\033[0;31m[ERROR]\033[0m Too many compiler warnings!"; false; fi
+    - if [ $(cat compileStepOutput.txt | grep -i warning | wc -l) -gt MAX_NO_COMPILER_WARN ]; then echo -e "\033[0;31m[ERROR]\033[0m Too many compiler warnings!"; false; fi
 
 jacocoInstructionsCoverage:
   stage: coverageTest
