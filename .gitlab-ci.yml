@@ -17,12 +17,13 @@ validateAndCompile:
   stage: build
 
   script:
-    - mvn $MAVEN_OPTS clean compile
-
+    - mvn $MAVEN_OPTS clean compile | tee compileStepOutput.txt
+  
   artifacts:
     expire_in: 1 hour
     paths:
       - target/
+      - compileStepOutput.txt
 
 runUnitTests:
   stage: test
