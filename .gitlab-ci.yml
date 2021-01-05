@@ -9,6 +9,7 @@ stages:
   - build
   - test
   - coverageTest
+  - package
 #  - deploy
 
 cache:
@@ -55,3 +56,13 @@ jacocoInstructionsCoverage:
   script: "awk -F \",\" '{ instructions += $4 + $5; covered += $5 } END { print covered, \"/\", instructions, \"instructions covered\"; print \"Instructions covered: \"100*covered/instructions, \"%\" }' target/site/jacoco/jacoco.csv"
   coverage: "/Instructions covered:\\s\\d+\\.*\\d*\\s%/"
 
+createDockerImage:
+  stage: package
+  
+  rules:
+    - if: '$CI_COMMIT_BRANCH == "master" && $CI_PIPELINE_SOURCE == "merge_request_event"'
+      allow_failure: false
+
+  script:
+    - latestVersion=$(git describe)
+    - echo latestVersion
