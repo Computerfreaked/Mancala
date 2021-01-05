@@ -61,12 +61,10 @@ createDockerImage:
   
   rules:
     # - if: '$CI_COMMIT_BRANCH == "master" && $CI_PIPELINE_SOURCE == "merge_request_event"'
-    - if: '$CI_COMMIT_BRANCH == "automatic-versioning"'
+    - if: '$CI_COMMIT_BRANCH == "master"'
       allow_failure: false
 
   script:
     - latestVersion=$(git describe)
-    - echo latestVersion
-    - echo '$CI_COMMIT_BRANCH'
-    - echo $CI_COMMIT_BRANCH
+    - echo $latestVersion
 
