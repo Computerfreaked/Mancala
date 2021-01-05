@@ -60,11 +60,14 @@ createDockerImage:
   stage: package
   
   rules:
-    # - if: '$CI_COMMIT_BRANCH == "master" && $CI_PIPELINE_SOURCE == "merge_request_event"'
     - if: '$CI_COMMIT_BRANCH == "master"'
       allow_failure: false
 
   script:
     - latestVersion=$(git describe)
-    - echo $latestVersion
+    - mvn versions:set -DnewVersion=$latestVersion
 
+  artifacts:
+    expire_in: 1 hour
+    paths:
+      - /target/mancala*
