@@ -66,6 +66,7 @@ createDockerImage:
   script:
     - latestVersion=$(git describe)
     - mvn versions:set -DnewVersion=$latestVersion
+    - mvn package
 
   artifacts:
     expire_in: 1 hour
