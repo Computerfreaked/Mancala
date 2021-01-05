@@ -71,4 +71,4 @@ createDockerImage:
   artifacts:
     expire_in: 1 hour
     paths:
-      - /target/mancala*
+      - target/mancala*
