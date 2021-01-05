@@ -67,3 +67,7 @@ createDockerImage:
     - latestVersion=$(git describe)
     - mvn versions:set -DnewVersion=$latestVersion
 
+  artifacts:
+    expire_in: 1 hour
+    paths:
+      - /target/mancala*
