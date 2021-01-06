@@ -79,9 +79,9 @@ jacocoInstructionsCoverage:
 createDockerImage:
   stage: package
   
-  rules:
-    # - if: '$CI_COMMIT_BRANCH == "master"'
-      allow_failure: false
+  # rules:
+  #   - if: '$CI_COMMIT_BRANCH == "master"'
+  #     allow_failure: false
 
   script:
     - latestVersion=$(git describe)
