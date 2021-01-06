@@ -1,6 +1,9 @@
 default:
   image: maven:3.6.3-openjdk-11
 
+services:
+  - docker:dind
+
 variables:
   MAVEN_OPTS: "-Dhttps.protocols=TLSv1.2 -Dmaven.repo.local=$CI_PROJECT_DIR/.m2/repository"
   MAX_NO_COMPILER_WARN: 2
@@ -96,8 +99,6 @@ updateVersion:
 createDockerImage:
   stage: deploy
   image: docker:stable
-  services:
-  - docker:dind
   
   # rules:
   #   - if: '$CI_COMMIT_BRANCH == "master"'
