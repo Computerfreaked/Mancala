@@ -67,8 +67,14 @@ code_quality:
 
 jacocoInstructionsCoverage:
   stage: coverageTest
+  
   script: "awk -F \",\" '{ instructions += $4 + $5; covered += $5 } END { print covered, \"/\", instructions, \"instructions covered\"; print \"Instructions covered: \"100*covered/instructions, \"%\" }' target/site/jacoco/jacoco.csv"
   coverage: "/Instructions covered:\\s\\d+\\.*\\d*\\s%/"
+  
+  artifacts:
+    expire_in: 1 hour
+    paths:
+      - target/
 
 createDockerImage:
   stage: package
@@ -81,6 +87,7 @@ createDockerImage:
     - latestVersion=$(git describe)
     - mvn versions:set -DnewVersion=$latestVersion
     - mvn package
+    - docker build -t computerfreaked/test
 
   artifacts:
     expire_in: 1 hour
