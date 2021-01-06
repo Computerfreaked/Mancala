@@ -58,7 +58,7 @@ code_quality:
   stage: test
   artifacts:
     expire_in: 30 days
-    paths: [gl-code-quality-report.json]
+    # paths: [gl-code-quality-report.json]
 
 
 jacocoInstructionsCoverage:
