@@ -16,9 +16,6 @@ cache:
   paths:
     - .m2/repository
 
-before_script:
-  - docker info
-
 validateAndCompile:
   stage: build
 
@@ -59,6 +56,10 @@ include:
 
 code_quality:
   stage: test
+
+  rules:
+    - when: never
+
   artifacts:
     expire_in: 30 days
     paths: [gl-code-quality-report.json]
