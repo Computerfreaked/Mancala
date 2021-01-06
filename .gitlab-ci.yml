@@ -10,7 +10,7 @@ stages:
   - test
   - coverageTest
   - package
-#  - deploy
+  - deploy
 
 cache:
   paths:
@@ -76,9 +76,9 @@ jacocoInstructionsCoverage:
     paths:
       - target/
 
-createDockerImage:
+updateVersion:
   stage: package
-  
+
   # rules:
   #   - if: '$CI_COMMIT_BRANCH == "master"'
   #     allow_failure: false
@@ -87,9 +87,19 @@ createDockerImage:
     - latestVersion=$(git describe)
     - mvn versions:set -DnewVersion=$latestVersion
     - mvn package
-    - docker build -t computerfreaked/test
-
+  
   artifacts:
     expire_in: 1 hour
     paths:
       - target/mancala*
+
+createDockerImage:
+  stage: deploy
+  image: docker:latest
+  
+  # rules:
+  #   - if: '$CI_COMMIT_BRANCH == "master"'
+  #     allow_failure: false
+
+  script:
+    - docker build -t computerfreaked/test:latest .
