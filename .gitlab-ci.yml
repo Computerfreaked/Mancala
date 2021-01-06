@@ -95,7 +95,7 @@ updateVersion:
 
 createDockerImage:
   stage: deploy
-  image: docker:latest
+  image: docker:stable
   
   # rules:
   #   - if: '$CI_COMMIT_BRANCH == "master"'
