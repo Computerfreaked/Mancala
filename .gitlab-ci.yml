@@ -21,9 +21,8 @@ updateVersion:
   stage: version
 
   script:
-    - latestVersion=$(git describe --always)
-    - echo $latestVersion
-    - echo $latestVersion | tee target/currentVersion.txt
+    - latestVersion=$(git describe --always | tee target/currentVersion.txt)
+    - cat target/currentVersion.txt
     - mvn versions:set -DnewVersion=$latestVersion
   
   artifacts:
