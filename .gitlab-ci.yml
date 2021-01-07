@@ -6,6 +6,7 @@ variables:
   MAX_NO_COMPILER_WARN: 2
 
 stages:
+  - bumpVersion
   - version
   - build
   - test
@@ -17,17 +18,20 @@ cache:
   paths:
     - .m2/repository
 
-applyCorrectVersion:
+doBump:
+  stage: dumpVersion
+
+  rules:
+    -if: '$CI_COMMIT_BRANCH == "master" && $CI_PIPELINE_SOURCE == "merge_request_event"'
+  
+    script:
+      - ./versionBumper.sh
+  
+
+applyVersion:
   stage: version
 
-  # rules:
-  #   - if: '$CI_COMMIT_BRANCH == "master" && $CI_PIPELINE_SOURCE == "merge_request_event"'
-  #     allow_failure: false
-
   script:
-    - git branch
-    - echo $CI_PIPELINE_SOURCE
-    - echo $CI_COMMIT_BRANCH
     - mkdir target
     - latestVersion=$(git describe --always | tee target/currentVersion.txt)
     - mvn versions:set -DnewVersion=$latestVersion
