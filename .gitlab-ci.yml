@@ -22,7 +22,7 @@ updateVersion:
 
   script:
     - latestVersion=$(git describe --always)
-    - echo $latestVersion | tee target/currentversion.txt
+    - echo $latestVersion | tee target/currentVersion.txt
     - mvn versions:set -DnewVersion=$latestVersion
   
   artifacts:
@@ -104,7 +104,7 @@ package:
     expire_in: 1 hour
     paths:
       - target/mancala*
-      - target/currentversion.txt
+      - target/currentVersion.txt
 
 createDockerImage:
   stage: deploy
