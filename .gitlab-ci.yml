@@ -24,8 +24,8 @@ doBump:
   rules:
     -if: '$CI_COMMIT_BRANCH == "master" && $CI_PIPELINE_SOURCE == "merge_request_event"'
   
-    script:
-      - ./versionBumper.sh
+  script:
+    - ./versionBumper.sh
   
 
 applyVersion:
