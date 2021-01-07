@@ -26,7 +26,6 @@ applyCorrectVersion:
 
   script:
     - git branch
-    - git pull
     - echo 'pipeline src $CI_PIPELINE_SOURCE'
     - echo 'commit branch $CI_COMMIT_BRANCH'
     - mkdir target
