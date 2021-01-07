@@ -118,4 +118,4 @@ createDockerImage:
   #     allow_failure: false
 
   script:
-    - docker build -t computerfreaked/test:$(cat currentversion.txt) .
+    - docker build -t computerfreaked/test:$(cat target/currentversion.txt) .
