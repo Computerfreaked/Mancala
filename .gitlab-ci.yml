@@ -23,7 +23,6 @@ updateVersion:
   script:
     - mkdir target
     - latestVersion=$(git describe --always | tee target/currentVersion.txt)
-    - cat target/currentVersion.txt
     - mvn versions:set -DnewVersion=$latestVersion
   
   artifacts:
