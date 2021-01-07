@@ -97,9 +97,9 @@ jacocoInstructionsCoverage:
 package:
   stage: package
 
-  # rules:
-  #   - if: '$CI_COMMIT_BRANCH == "master"'
-  #     allow_failure: false
+  rules:
+    - if: '$CI_COMMIT_BRANCH == "master"'
+      allow_failure: false
 
   script:
     - mvn package
@@ -116,9 +116,9 @@ createDockerImage:
   services:
   - docker:19.03.13-dind
   
-  # rules:
-  #   - if: '$CI_COMMIT_BRANCH == "master"'
-  #     allow_failure: false
+  rules:
+    - if: '$CI_COMMIT_BRANCH == "master"'
+      allow_failure: false
 
   script:
     - docker login -u $DOCKERHUB_USERNAME -p $DOCKERHUB_PASSWORD
