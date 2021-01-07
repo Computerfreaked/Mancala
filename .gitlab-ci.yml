@@ -26,8 +26,8 @@ applyCorrectVersion:
 
   script:
     - git branch
-    - echo 'pipeline src $CI_PIPELINE_SOURCE'
-    - echo 'commit branch $CI_COMMIT_BRANCH'
+    - echo $CI_PIPELINE_SOURCE
+    - echo $CI_COMMIT_BRANCH
     - mkdir target
     - latestVersion=$(git describe --always | tee target/currentVersion.txt)
     - mvn versions:set -DnewVersion=$latestVersion
