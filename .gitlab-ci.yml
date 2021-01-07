@@ -84,7 +84,7 @@ updateVersion:
   #     allow_failure: false
 
   script:
-    - latestVersion=$(git describe --always)
+    - latestVersion=$(git describe --always) | tee currentversion.txt
     - mvn versions:set -DnewVersion=$latestVersion
     - mvn package
   
@@ -92,6 +92,7 @@ updateVersion:
     expire_in: 1 hour
     paths:
       - target/mancala*
+      - currentversion.txt
 
 createDockerImage:
   stage: deploy
@@ -105,4 +106,4 @@ createDockerImage:
 
   script:
   - latestVersion=$(git describe --always)
-    - docker build -t computerfreaked/test:$latestVersion .
+    - docker build -t computerfreaked/test:$(cat currentversion.txt) .
