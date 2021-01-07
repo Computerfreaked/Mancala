@@ -6,7 +6,7 @@ variables:
   MAX_NO_COMPILER_WARN: 2
 
 stages:
-  - bumpVersion
+  - bumpversion
   - version
   - build
   - test
@@ -19,7 +19,7 @@ cache:
     - .m2/repository
 
 doBump:
-  stage: bumpVersion
+  stage: bumpversion
 
   rules:
     -if: '$CI_COMMIT_BRANCH == "master" && $CI_PIPELINE_SOURCE == "merge_request_event"'
