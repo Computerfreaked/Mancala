@@ -17,14 +17,15 @@ cache:
   paths:
     - .m2/repository
 
-updateVersion:
+applyCorrectVersion:
   stage: version
 
   # rules:
-  #   - if: '$CI_COMMIT_BRANCH == "master"'
+  #   - if: '$CI_COMMIT_BRANCH == "master" && $CI_PIPELINE_SOURCE == "merge_request_event"'
   #     allow_failure: false
 
   script:
+    - git fetch
     - mkdir target
     - latestVersion=$(git describe --always | tee target/currentVersion.txt)
     - mvn versions:set -DnewVersion=$latestVersion
