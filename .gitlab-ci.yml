@@ -121,4 +121,5 @@ createDockerImage:
   #     allow_failure: false
 
   script:
+    - docker login -u $DOCKERHUB_USERNAME -p $DOCKERHUB_PASSWORD
     - docker build -t computerfreaked/test:$(cat target/currentVersion.txt) .
