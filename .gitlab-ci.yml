@@ -22,6 +22,7 @@ updateVersion:
 
   script:
     - latestVersion=$(git describe --always)
+    - echo $latestVersion
     - echo $latestVersion | tee target/currentVersion.txt
     - mvn versions:set -DnewVersion=$latestVersion
   
