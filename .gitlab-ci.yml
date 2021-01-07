@@ -84,7 +84,7 @@ updateVersion:
   #     allow_failure: false
 
   script:
-    - latestVersion=$(git describe)
+    - latestVersion=$(git describe --always)
     - mvn versions:set -DnewVersion=$latestVersion
     - mvn package
   
