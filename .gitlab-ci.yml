@@ -6,6 +6,7 @@ variables:
   MAX_NO_COMPILER_WARN: 2
 
 stages:
+  - version
   - build
   - test
   - coverageTest
@@ -15,6 +16,19 @@ stages:
 cache:
   paths:
     - .m2/repository
+
+updateVersion:
+  stage: version
+
+  script:
+    - latestVersion=$(git describe --always)
+    - echo $latestVersion | tee target/currentversion.txt
+    - mvn versions:set -DnewVersion=$latestVersion
+  
+  artifacts:
+    expire_in: 1 hour
+    paths:
+      - target/
 
 validateAndCompile:
   stage: build
@@ -76,7 +90,7 @@ jacocoInstructionsCoverage:
     paths:
       - target/
 
-updateVersion:
+package:
   stage: package
 
   # rules:
@@ -84,16 +98,13 @@ updateVersion:
   #     allow_failure: false
 
   script:
-    - latestVersion=$(git describe --always)
-    - cat $latestVersion | tee currentversion.txt
-    - mvn versions:set -DnewVersion=$latestVersion
     - mvn package
   
   artifacts:
     expire_in: 1 hour
     paths:
       - target/mancala*
-      - currentversion.txt
+      - target/currentversion.txt
 
 createDockerImage:
   stage: deploy
