@@ -95,7 +95,7 @@ updateVersion:
 
 createDockerImage:
   stage: deploy
-  image: docker:stable
+  image: docker:19.03.12
   services:
   - docker:19.03.13-dind
   
