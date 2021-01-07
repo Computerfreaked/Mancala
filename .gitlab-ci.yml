@@ -104,4 +104,5 @@ createDockerImage:
   #     allow_failure: false
 
   script:
-    - docker build -t computerfreaked/test:latest .
+  - latestVersion=$(git describe --always)
+    - docker build -t computerfreaked/test:$latestVersion .
