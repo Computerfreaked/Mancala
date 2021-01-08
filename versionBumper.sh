@@ -9,7 +9,7 @@
   git config user.email "bdvries@sogyo.nl"
   echo $(git config --list)
   git tag -a $newVersion -m "New feature"
-  git push origin --tags
+  git push -o ci-skip origin --tags
 
   echo $(git remote -v)
 #fi
