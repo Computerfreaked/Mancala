@@ -7,10 +7,10 @@ if [[ $CI_COMMIT_BRANCH == "master" ]]; then
 
   git config user.name "bdvries"
   git config user.email "bdvries@sogyo.nl"
-  git tag -a $newVersion -m "New feature"
+  git tag -a $newVersion -m "New feature" --force
   git remote remove origin
   git remote add origin http://my-ci-token:$my_ci_token@git.sogyo.nl/bdvries/mancala-java.git
-  git push -o ci-skip origin --tags
+  git push -o ci.skip origin --tags --force
 fi
 
 mkdir target
