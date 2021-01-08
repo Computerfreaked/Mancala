@@ -17,18 +17,15 @@ cache:
   paths:
     - .m2/repository
 
-updateVersion:
+doBump:
   stage: version
 
   # rules:
-  #   - if: '$CI_COMMIT_BRANCH == "master"'
-  #     allow_failure: false
-
-  script:
-    - mkdir target
-    - latestVersion=$(git describe --always | tee target/currentVersion.txt)
-    - mvn versions:set -DnewVersion=$latestVersion
+  #   - if: '$CI_COMMIT_BRANCH == "master" && $CI_PIPELINE_SOURCE == "merge_request_event"'
   
+  script:
+    - ./versionBumper.sh
+
   artifacts:
     expire_in: 1 hour
     paths:
@@ -97,9 +94,9 @@ jacocoInstructionsCoverage:
 package:
   stage: package
 
-  # rules:
-  #   - if: '$CI_COMMIT_BRANCH == "master"'
-  #     allow_failure: false
+  rules:
+    - if: '$CI_COMMIT_BRANCH == "master"'
+      allow_failure: false
 
   script:
     - mvn package
@@ -114,11 +111,14 @@ createDockerImage:
   stage: deploy
   image: docker:19.03.12
   services:
-  - docker:19.03.13-dind
+    - docker:19.03.13-dind
   
-  # rules:
-  #   - if: '$CI_COMMIT_BRANCH == "master"'
-  #     allow_failure: false
+  rules:
+    - if: '$CI_COMMIT_BRANCH == "master"'
+      allow_failure: false
 
   script:
-    - docker build -t computerfreaked/test:$(cat target/currentVersion.txt) .
+    - docker login -u $DOCKERHUB_USERNAME -p $DOCKERHUB_PASSWORD
+    - docker build -t computerfreaked/mancala:$(cat target/currentVersion.txt) -t computerfreaked/mancala:latest .
+    - docker push computerfreaked/mancala:$(cat target/currentVersion.txt)
+    - docker push computerfreaked/mancala:latest
