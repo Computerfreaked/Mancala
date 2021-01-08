@@ -8,8 +8,8 @@
   git config user.name "bdvries"
   git config user.email "bdvries@sogyo.nl"
   git tag -a $newVersion -m "New feature"
-  echo http://GITLAB_CI_TOKEN:$GITLAB_CI_TOKEN@git.sogyo.nl/bdvries/mancala-java.git
-  git push -o ci-skip origin --tags http://GITLAB_CI_TOKEN:$GITLAB_CI_TOKEN@git.sogyo.nl/bdvries/mancala-java.git $CI_COMMIT_BRANCH
+  echo http://my-ci-token:$my_ci_token@git.sogyo.nl/bdvries/mancala-java.git
+  git push -o ci-skip origin --tags http://my-ci-token:$my_ci_token@git.sogyo.nl/bdvries/mancala-java.git $CI_COMMIT_BRANCH
 #fi
 
 mkdir target
