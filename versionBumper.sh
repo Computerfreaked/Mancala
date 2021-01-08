@@ -7,11 +7,8 @@
 
   git config user.name "bdvries"
   git config user.email "bdvries@sogyo.nl"
-  echo $(git config --list)
   git tag -a $newVersion -m "New feature"
-  git push -o ci-skip origin --tags
-
-  echo $(git remote -v)
+  git push -o ci-skip origin --tags http://GITLAB_CI_TOKEN:$GITLAB_CI_TOKEN@git.sogyo.nl/bdvries/mancala-java.git $CI_COMMIT_BRANCH
 #fi
 
 mkdir target
