@@ -22,7 +22,7 @@ doBump:
   stage: bumpversion
 
   rules:
-    -if: '$CI_COMMIT_BRANCH == "master" && $CI_PIPELINE_SOURCE == "merge_request_event"'
+    - if: '$CI_COMMIT_BRANCH == "master" && $CI_PIPELINE_SOURCE == "merge_request_event"'
   
   script:
     - ./versionBumper.sh
@@ -121,7 +121,7 @@ createDockerImage:
   stage: deploy
   image: docker:19.03.12
   services:
-  - docker:19.03.13-dind
+    - docker:19.03.13-dind
   
   rules:
     - if: '$CI_COMMIT_BRANCH == "master"'
