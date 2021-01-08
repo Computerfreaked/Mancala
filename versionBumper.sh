@@ -8,8 +8,9 @@
   git config user.name "bdvries"
   git config user.email "bdvries@sogyo.nl"
   git tag -a $newVersion -m "New feature"
-  echo http://my-ci-token:$my_ci_token@git.sogyo.nl/bdvries/mancala-java.git
-  git push -o ci-skip origin --tags http://my-ci-token:$my_ci_token@git.sogyo.nl/bdvries/mancala-java.git $CI_COMMIT_BRANCH
+  git remove origin
+  git remote add origin http://my-ci-token:$my_ci_token@git.sogyo.nl/bdvries/mancala-java.git
+  git push -o ci-skip origin --tags
 #fi
 
 mkdir target
