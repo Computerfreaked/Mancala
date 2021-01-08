@@ -1,5 +1,4 @@
 #!/bin/bash
-echo '$CI_PIPELINE_SOURCE='$CI_PIPELINE_SOURCE
 
 if [[ $CI_COMMIT_BRANCH == "master" ]]; then
   readarray -t -d '.' versionParts <<< $(git describe --abbrev=0)
