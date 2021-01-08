@@ -1,4 +1,5 @@
 #!/bin/bash
+echo "$CI_PIPELINE_SOURCE="$CI_PIPELINE_SOURCE
 
 if [[ $CI_COMMIT_BRANCH == "master" && $CI_PIPELINE_SOURCE == "merge_request_event" ]]; then
   readarray -t -d '.' versionParts <<< $(git describe --abbrev=0)
