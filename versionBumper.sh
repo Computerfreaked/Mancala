@@ -9,7 +9,7 @@
   git config user.email "bdvries@sogyo.nl"
   git tag -a $newVersion -m "New feature"
 
-  echo git remote -v
+  echo $(git remote -v)
 #fi
 
 mkdir target
