@@ -1,7 +1,7 @@
 #!/bin/bash
 echo '$CI_PIPELINE_SOURCE='$CI_PIPELINE_SOURCE
 
-if [[ $CI_COMMIT_BRANCH == "master" && $CI_PIPELINE_SOURCE == "merge_request_event" ]]; then
+if [[ $CI_COMMIT_BRANCH == "master" ]]; then
   readarray -t -d '.' versionParts <<< $(git describe --abbrev=0)
   newVersion=${versionParts[0]}.$((${versionParts[1]} + 1)).0
   echo -e "\033[0;32mThe new version number is "$newVersion"\033[0m"
