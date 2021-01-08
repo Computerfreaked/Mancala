@@ -28,7 +28,7 @@ doBump:
 
   artifacts:
     expire_in: 1 hour
-    pahts:
+    paths:
       - target/
 
 validateAndCompile:
